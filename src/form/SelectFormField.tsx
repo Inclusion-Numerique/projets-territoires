@@ -1,6 +1,5 @@
 import { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
 import { FieldPath } from 'react-hook-form/dist/types/path'
-import { get } from 'lodash-es'
 import { addAsterisk } from '@pt/form/addAsterisk'
 import { Options } from '@pt/utils/options'
 
@@ -27,7 +26,7 @@ export function SelectFormField<T extends FieldValues>({
   placeholder?: string
 }) {
   // We do not use language errors as record object, we cast to string
-  const error = get(errors, path)?.message as string | undefined
+  const error = 'todo'
   const id = `input-form-field__${path}`
 
   const registerProps = register(path)

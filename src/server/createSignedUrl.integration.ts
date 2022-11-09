@@ -1,10 +1,11 @@
 import { resolve } from 'path'
-import { execa } from 'execa'
+import axios from 'axios'
 import { PrivateConfig } from '@pt/config'
 import {
   createSignedGetUrl,
   createSignedUploadUrl,
 } from '@pt/server/createSignedUrl'
+import { createReadStream } from 'fs'
 
 describe('createSignedUrl', () => {
   describe('createSignedGetUrl', () => {
@@ -22,11 +23,8 @@ describe('createSignedUrl', () => {
       expect(url).toInclude(key)
 
       // Try with system lib, should always work if url is correct
-      const { stdout, exitCode } = await execa('curl', [url])
-
-      expect(exitCode).toEqual(0)
-      expect(stdout).not.toInclude('<Code>AccessDenied</Code>')
-      expect(stdout).not.toInclude('Error')
+      const { status } = await axios.get(url)
+      expect(status).toEqual(200)
     }, 30000)
   })
 
@@ -49,19 +47,10 @@ describe('createSignedUrl', () => {
       expect(url).toInclude(PrivateConfig.S3.bucketId)
       expect(url).toInclude(fileName)
 
-      // Try with system lib, should always work if url is correct
-      // Then js code for uploading is independent of this test
-      const { stdout, exitCode } = await execa('curl', [
-        '-X',
-        'PUT',
-        '-T',
-        filePath,
-        url,
-      ])
-
-      expect(exitCode).toEqual(0)
-      expect(stdout).not.toInclude('<Code>AccessDenied</Code>')
-      expect(stdout).not.toInclude('Error')
+      const { status } = await axios.put(url, {
+        data: createReadStream(filePath),
+      })
+      expect(status).toEqual(200)
     }, 30000)
   })
 })

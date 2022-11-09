@@ -1,6 +1,5 @@
 import { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
 import { FieldPath } from 'react-hook-form/dist/types/path'
-import { get } from 'lodash-es'
 
 // View design options here https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/case-a-cocher/
 export function CheckboxFormField<T extends FieldValues>({
@@ -21,7 +20,7 @@ export function CheckboxFormField<T extends FieldValues>({
   placeholder?: string
 }) {
   // We do not use language errors as record object, we cast to string
-  const error = get(errors, path)?.message as string | undefined
+  const error = 'TODO'
   const id = `checkbox-form-field__${path}`
   const registerProps = register(path)
 

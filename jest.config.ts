@@ -11,14 +11,10 @@ dotenv.config()
 const transformIgnorePackages = [
   'nanoid',
   'undici',
-  'execa',
-  'strip-final-newline',
-  'npm-run-path',
-  'path-key',
-  'onetime',
-  'mimic-fn',
-  'human-signals',
-  'is-stream',
+  'node-fetch',
+  'data-uri-to-buffer',
+  'fetch-blob',
+  'formdata-polyfill',
 ]
 
 const packagesNamesPattern = transformIgnorePackages.join('|')
