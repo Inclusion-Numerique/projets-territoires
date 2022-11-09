@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "env-cmd next dev",
+    "dev": "next dev",
     "build": "next build",
-    "start": "env-cmd next start",
+    "scalingo-postbuild": "next build && npm prune --omit=dev",
+    "start": "next start",
     "fixtures:load": "ts-node fixtures/fixtures.ts",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
