@@ -14,7 +14,7 @@ const PublicHeader = () => {
                     href="/"
                     aria-current="page"
                     target="_self"
-                    title="Projets des territoires"
+                    title="Territoires de solutions"
                     className="nuxt-link-exact-active nuxt-link-active"
                   >
                     <p className="fr-logo">
