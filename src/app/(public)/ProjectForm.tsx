@@ -110,10 +110,7 @@ const ProjectForm = () => {
   const fieldsDisabled = isLoading
 
   return (
-    <div
-      className="fr-card fr-background-default--grey"
-      style={{ width: '100%' }}
-    >
+    <div className="fr-card fr-background-alt--grey" style={{ width: '100%' }}>
       <div className="fr-card__body">
         <div className="fr-card__content">
           <h3>Votre projet</h3>

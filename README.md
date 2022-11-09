@@ -29,7 +29,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Tunnel to database
 
-Run `scalingo --app mon-suivi-social-next db-tunnel SCALINGO_POSTGRESQL_URL`
+Run `scalingo --app projets-territoires db-tunnel SCALINGO_POSTGRESQL_URL`
 
 ## Use s3 api
 
