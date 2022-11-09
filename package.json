@@ -7,7 +7,6 @@
     "build": "next build",
     "scalingo-postbuild": "next build && modclean -Pr && npm prune --omit=dev",
     "start": "next start",
-    "fixtures:load": "ts-node fixtures/fixtures.ts",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
     "test": "jest"

@@ -1,1 +1,1 @@
-postdeploy: npx prisma migrate deploy && npm run fixtures:load
+postdeploy: npx prisma migrate deploy
