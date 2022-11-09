@@ -1,19 +1,22 @@
 import { nanoid } from 'nanoid'
 import { PrivateConfig } from '@pt/config'
 import { s3 } from '@pt/server/s3/s3'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
+import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3'
 
 export const createSignedGetUrl = async ({
   key,
 }: {
   key: string
 }): Promise<{ url: string }> => {
-  const fileParams = {
-    Key: key,
-    // Expires: 3600,
-  }
-
   // Signed URL
-  const url = await s3.getSignedUrlPromise('getObject', fileParams)
+  const url = await getSignedUrl(
+    s3,
+    new GetObjectCommand({ Key: key, Bucket: PrivateConfig.S3.bucketId }),
+    {
+      expiresIn: 3600,
+    },
+  )
   return { url }
 }
 
@@ -29,13 +32,15 @@ export const createSignedUploadUrl = async ({
   // TODO current git branch and more info on user
   const key = `${PrivateConfig.NodeEnv}/${directory}/${nanoid()}_${name}`
 
-  const fileParams = {
-    Key: key,
-    // Expires: 3600,
-    ContentType: type,
-  }
-
   // Signed URL
-  const url = await s3.getSignedUrlPromise('putObject', fileParams)
+  const url = await getSignedUrl(
+    s3,
+    new PutObjectCommand({
+      Key: key,
+      Bucket: PrivateConfig.S3.bucketId,
+      ContentType: type,
+    }),
+    { expiresIn: 3600 },
+  )
   return { url, key }
 }

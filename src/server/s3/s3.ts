@@ -1,12 +1,11 @@
-import { S3 } from 'aws-sdk'
+import { S3Client } from '@aws-sdk/client-s3'
 import { PrivateConfig } from '@pt/config'
 
-export const s3 = new S3({
-  accessKeyId: PrivateConfig.S3.accessKey,
-  secretAccessKey: PrivateConfig.S3.secretKey,
+export const s3 = new S3Client({
+  credentials: {
+    accessKeyId: PrivateConfig.S3.accessKey,
+    secretAccessKey: PrivateConfig.S3.secretKey,
+  },
   region: PrivateConfig.S3.bucketLocation,
-  s3BucketEndpoint: true,
-  endpoint: `${PrivateConfig.S3.bucketId}.${PrivateConfig.S3.host}`,
-  signatureVersion: 'v4',
-  params: { Bucket: PrivateConfig.S3.bucketId },
+  endpoint: `https://${PrivateConfig.S3.host}`,
 })

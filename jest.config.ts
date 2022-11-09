@@ -9,12 +9,14 @@ dotenv.config()
  * add the faulty package to this list
  */
 const transformIgnorePackages = [
+  'uuid',
   'nanoid',
   'undici',
   'node-fetch',
   'data-uri-to-buffer',
   'fetch-blob',
   'formdata-polyfill',
+  '@aws-sdk/middleware-retry',
 ]
 
 const packagesNamesPattern = transformIgnorePackages.join('|')
