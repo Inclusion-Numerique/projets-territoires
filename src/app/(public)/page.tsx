@@ -31,15 +31,17 @@ export default function Home() {
             </p>
           </div>
           <div className="fr-col-12 fr-col-md-6 fr-hidden fr-unhidden-md">
-            <picture className="fr-mx-auto">
-              <source srcSet="/images/anct.svg" type="image/svg" />
-              <img
-                className="fr-responsive-img"
-                src="/images/MIN_Transition_Ecologique_Cohesion_Territoires_CMJN.png"
-                alt="Logo ANCT"
-                style={{ maxWidth: 340 }}
-              />
-            </picture>
+            <p className="fr-logo fr-logo--lg fr-mx-auto">
+              Ministère
+              <br />
+              de la transition
+              <br />
+              écologique
+              <br />
+              et de la cohésion
+              <br />
+              des territoires
+            </p>
           </div>
         </div>
       </div>
