@@ -1,7 +1,7 @@
 {
   "CORSRules": [
     {
-      "AllowedOrigins": ["*"],
+      "AllowedOrigins": ["https://projets-territoires.osc-fr1.scalingo.io", "http://localhost:3000"],
       "AllowedHeaders": ["*"],
       "AllowedMethods": ["GET", "HEAD", "POST", "PUT", "DELETE"],
       "MaxAgeSeconds": 3000,

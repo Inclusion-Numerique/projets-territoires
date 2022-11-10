@@ -30,7 +30,7 @@ export default function Home() {
               projets de vos territoires.
             </p>
             <p className="fr-text--sm fr-mb-5w">
-              Ces projets seront ensuite intégrés dans la projethotèque du site
+              Ces projets seront ensuite intégrés dans la projetothèque du site
               de l&apos;ANCT.
             </p>
           </div>
