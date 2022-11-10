@@ -2,16 +2,10 @@ import { initTRPC, TRPCError } from '@trpc/server'
 import { RpcContext } from '@pt/server/rpc/rpcContext'
 import { SessionUser } from '@pt/auth/sessionUser'
 import { ProjectDataValidation } from '@pt/project/project'
-import { customAlphabet } from 'nanoid'
 import { prismaClient } from '@pt/prisma'
 import { v4 } from 'uuid'
 
 const t = initTRPC.context<RpcContext>().create()
-
-const referenceGenerator = customAlphabet(
-  'ABCDEFGHJKLMNPQRSTUVWXYZ123456789',
-  10,
-)
 
 const enforceUserIsLoggedIn = (
   user: SessionUser | null,
@@ -52,7 +46,12 @@ export const appRouter = t.router({
           data: {
             id,
             reference,
-            community: { create: community },
+            community: {
+              connectOrCreate: {
+                where: { siret: community.siret },
+                create: community,
+              },
+            },
             quality,
             name,
             description,

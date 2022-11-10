@@ -79,21 +79,20 @@ model Project {
   tech        String
   attachments Attachment[]
   created     DateTime     @default(now())
-  community   Community    @relation(fields: [communityId], references: [id])
-  communityId String       @db.Uuid
+  community   Community    @relation(fields: [communitySiret], references: [siret])
+  communitySiret String
 }
 
 model Community {
-  id                            String    @id @default(uuid()) @db.Uuid
+  siret                         String    @id
   nic                           String
   siren                         String
-  siret                         String
   codeCommuneEtablissement      String
   codePostalEtablissement       String
   libelleCommuneEtablissement   String
   categorieJuridiqueUniteLegale String
   denominationUniteLegale       String
-  Project                       Project[]
+  project                       Project[]
 }
 
 model Attachment {
