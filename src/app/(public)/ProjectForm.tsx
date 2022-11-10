@@ -114,10 +114,6 @@ const ProjectForm = () => {
       <div className="fr-card__body">
         <div className="fr-card__content">
           <h3>Votre projet</h3>
-          <p className="fr-mb-3w">
-            Les informations sur votre projets seront traitées par un agent de
-            l&apos;ANCT pour intégration dans la projetothèque.
-          </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <InputFormField
               label="Nom et prénom du point de contact"

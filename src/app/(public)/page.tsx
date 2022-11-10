@@ -26,12 +26,8 @@ export default function Home() {
           >
             <h1 className="fr-mt-8v">Territoires de solutions</h1>
             <p className="fr-text--lead fr-mb-3w">
-              Destiné aux maires, ce service vous permet de renseigner les
-              projets de vos territoires.
-            </p>
-            <p className="fr-text--sm fr-mb-5w">
-              Ces projets seront ensuite intégrés dans la projetothèque du site
-              de l&apos;ANCT.
+              Vous êtes maire ? Ce formulaire vous permet de renseigner les
+              projets de votre territoire, en quelques clics.
             </p>
           </div>
           <div className="fr-col-12 fr-col-md-6 fr-hidden fr-unhidden-md">
@@ -39,9 +35,9 @@ export default function Home() {
               <source srcSet="/images/anct.svg" type="image/svg" />
               <img
                 className="fr-responsive-img"
-                src="/images/anct.svg"
+                src="/images/MIN_Transition_Ecologique_Cohesion_Territoires_CMJN.png"
                 alt="Logo ANCT"
-                style={{ maxWidth: 200 }}
+                style={{ maxWidth: 340 }}
               />
             </picture>
           </div>
