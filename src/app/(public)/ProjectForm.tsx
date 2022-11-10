@@ -15,6 +15,7 @@ import axios, { AxiosError } from 'axios'
 import AttachmentUploader from '@pt/attachments/AttachmentUploader'
 import { generateReference } from '@pt/project/generateReference'
 import { RadioFormField } from '@pt/form/RadioFormField'
+import { CommunitySearchBar } from '@pt/form/CommunitySearchBar'
 
 type FormUploadedFile =
   | {
@@ -120,6 +121,7 @@ const ProjectForm = () => {
         <div className="fr-card__content">
           <h3>Votre projet</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <CommunitySearchBar />
             <InputFormField
               label="Nom et prénom du point de contact"
               disabled={fieldsDisabled}
