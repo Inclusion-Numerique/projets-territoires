@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { DsfrThemeSwitcher } from '@pt/dsfr/DsfrThemeSwitcher'
 
 const PublicHeader = () => {
   return (
@@ -18,14 +17,20 @@ const PublicHeader = () => {
                     className="nuxt-link-exact-active nuxt-link-active"
                   >
                     <p className="fr-logo">
-                      République
+                      Ministère
                       <br />
-                      Française
+                      de la transition
+                      <br />
+                      écologique
+                      <br />
+                      et de la cohésion
+                      <br />
+                      des territoires
                     </p>
                   </Link>
                 </div>
                 <div className="fr-header__operator">
-                  <h2>Salon des maires</h2>
+                  <h2>Territoires de solutions</h2>
                 </div>
                 <div className="fr-header__navbar">
                   <button
@@ -40,24 +45,6 @@ const PublicHeader = () => {
                     Menu
                   </button>
                 </div>
-              </div>
-            </div>
-            <div className="fr-header__tools">
-              <div className="fr-header__tools-links">
-                <ul className="fr-links-group">
-                  <li>
-                    <DsfrThemeSwitcher />
-                  </li>
-                  <li>
-                    <Link
-                      href="/auth/signin"
-                      target="_self"
-                      className="fr-btn fr-btn--sm fr-btn--icon-left fr-icon-account-line"
-                    >
-                      Espace ANCT
-                    </Link>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

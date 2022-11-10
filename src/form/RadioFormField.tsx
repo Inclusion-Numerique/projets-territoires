@@ -1,7 +1,5 @@
-import { HTMLInputTypeAttribute } from 'react'
 import { Control, Controller, FieldValues } from 'react-hook-form'
 import { FieldPath } from 'react-hook-form/dist/types/path'
-import TextareaAutosize from 'react-textarea-autosize'
 import { Options } from '@pt/utils/options'
 
 // View design options here https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/boutons-radio/
@@ -12,7 +10,6 @@ export function RadioFormField<T extends FieldValues>({
   control,
   hint,
   disabled,
-  multiple,
 }: {
   control: Control<T>
   path: FieldPath<T>
@@ -20,7 +17,6 @@ export function RadioFormField<T extends FieldValues>({
   disabled?: boolean
   label?: string
   hint?: string
-  multiple?: boolean
 }) {
   const id = `input-form-field__${path}`
 
@@ -46,20 +42,24 @@ export function RadioFormField<T extends FieldValues>({
               {hint ? <span className="fr-hint-text">{hint}</span> : null}
             </legend>
             <div className="fr-fieldset__content">
-              {options.map((option) => (
-                <div key={value} className="fr-radio-group">
+              {options.map((option, index) => (
+                <div key={option.value} className="fr-radio-group">
                   <input
                     type="radio"
-                    id={id}
+                    id={`${id}__${index}`}
                     disabled={disabled}
                     onBlur={onBlur}
-                    onChange={onChange}
+                    onChange={(e) => {
+                      console.log('ON CHANGE RADIO', e)
+                      if (e.target.checked) {
+                        onChange(option.value)
+                      }
+                    }}
                     value={option.value}
                     name={name}
                     ref={ref}
-                    checked={value === option.value}
                   />
-                  <label className="fr-label" htmlFor={id}>
+                  <label className="fr-label" htmlFor={`${id}__${index}`}>
                     {option.name}
                   </label>
                 </div>

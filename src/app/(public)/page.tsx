@@ -1,6 +1,7 @@
 import ProjectForm from '@pt/app/(public)/ProjectForm'
+import Link from 'next/link'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <div className="fr-container">
@@ -24,23 +25,26 @@ export default function Home() {
               justifyContent: 'center',
             }}
           >
-            <h1 className="fr-mt-8v">Territoires de solutions</h1>
-            <p className="fr-text--lead fr-mb-3w">
-              Vous êtes maire ? Ce formulaire vous permet de renseigner les
-              projets de votre territoire, en quelques clics.
+            <h1 className="fr-mt-8v">
+              Ensemble, partageons les solutions des territoires
+            </h1>
+            <p className="fr-text--lead">
+              « 
+              <strong>
+                La transition écologique est le défi majeur pour notre pays.
+              </strong>{' '}
+              Les collectivités territoriales sont en première ligne pour y
+              faire face. Le partage des solutions concrètes, des réussites
+              faites ici ou là, est indispensable pour accélération la
+              transition écologique de nos territoires. Ensemble, partageons les
+              solutions. »
             </p>
-          </div>
-          <div className="fr-col-12 fr-col-md-6 fr-hidden fr-unhidden-md">
-            <p className="fr-logo fr-logo--lg fr-mx-auto">
-              Ministère
-              <br />
-              de la transition
-              <br />
-              écologique
-              <br />
-              et de la cohésion
-              <br />
-              des territoires
+            <p className="fr-text--lead" style={{ textAlign: 'right' }}>
+              Christophe Béchu
+            </p>
+            <p className="fr-text--sm" style={{ textAlign: 'right' }}>
+              Ministre de la Transition écologique et de la Cohésion des
+              territoires
             </p>
           </div>
         </div>
@@ -49,7 +53,9 @@ export default function Home() {
         <div className="fr-container">
           <div className="fr-grid-row fr-mt-8v fr-mb-8v fr-grid-row--center">
             <div className="fr-col-12 fr-col-md-10 fr-col-lg-8">
-              <ProjectForm />
+              <Link href="/projet" className="fr-btn">
+                Participer
+              </Link>
             </div>
           </div>
         </div>

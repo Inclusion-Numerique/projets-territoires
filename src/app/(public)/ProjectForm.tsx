@@ -16,6 +16,7 @@ import AttachmentUploader from '@pt/attachments/AttachmentUploader'
 import { generateReference } from '@pt/project/generateReference'
 import { RadioFormField } from '@pt/form/RadioFormField'
 import { CommunitySearchBar } from '@pt/form/CommunitySearchBar'
+import { CommunitySearchFormField } from '@pt/form/CommunitySearchFormField'
 
 type FormUploadedFile =
   | {
@@ -121,7 +122,12 @@ const ProjectForm = () => {
         <div className="fr-card__content">
           <h3>Votre projet</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <CommunitySearchBar />
+            <CommunitySearchFormField
+              label="Collectivité"
+              disabled={fieldsDisabled}
+              control={control}
+              path="community"
+            />
             <InputFormField
               label="Nom et prénom du point de contact"
               disabled={fieldsDisabled}
@@ -200,7 +206,7 @@ const ProjectForm = () => {
             <p>Souhaitez-vous ajouter des pièces jointes ?</p>
             <Controller
               control={control}
-              name="files"
+              name="attachments"
               render={({
                 field: { onChange, onBlur, value, name, ref },
                 fieldState: { invalid, isTouched, isDirty, error },

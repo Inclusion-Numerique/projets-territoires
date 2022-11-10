@@ -1,19 +1,26 @@
 import { PropsWithChildren } from 'react'
 import { getSessionUser } from '@pt/auth/getSessionUser'
-import PrivateLayoutContent from '@pt/app/(private)/PrivateLayoutContent'
-import RedirectToSignin from '@pt/app/(private)/RedirectToSignin'
+import { redirect } from 'next/navigation'
+import PrivateHeader from '@pt/app/(private)/PrivateHeader'
+import PublicFooter from '@pt/app/(public)/PublicFooter'
 
 const PrivateLayout = async ({ children, ...props }: PropsWithChildren) => {
   const user = await getSessionUser()
 
   if (!user) {
-    return <RedirectToSignin />
+    return redirect('/auth/signin')
   }
 
   return (
-    <PrivateLayoutContent user={user} {...props}>
-      {children}
-    </PrivateLayoutContent>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}
+    >
+      <PrivateHeader user={user} />
+      <div className="fr-container" style={{ flex: 1 }}>
+        <div>{children}</div>
+      </div>
+      <PublicFooter />
+    </div>
   )
 }
 

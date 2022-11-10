@@ -16,6 +16,22 @@ import { Options } from '@pt/utils/options'
  */
 
 export const ProjectDataValidation = z.object({
+  community: z.object(
+    {
+      nic: z.string(),
+      siren: z.string(),
+      siret: z.string(),
+      codeCommuneEtablissement: z.string(),
+      codePostalEtablissement: z.string(),
+      libelleCommuneEtablissement: z.string(),
+      categorieJuridiqueUniteLegale: z.string(),
+      denominationUniteLegale: z.string(),
+    },
+    {
+      required_error: 'Veuillez renseigner la collectivité.',
+      invalid_type_error: 'Veuillez renseigner la collectivité.',
+    },
+  ),
   name: z.string({
     required_error: 'Veuillez renseigner le nom du projet',
   }),
@@ -60,20 +76,19 @@ export const ProjectDataValidation = z.object({
     .max(1000, 'Veuillez entrer 1000 caractères maximum'),
   reference: z.string(),
   // Array of storage keys
-  files: z.array(z.string()),
+  attachments: z.array(
+    z.object({ key: z.string(), type: z.string(), name: z.string() }),
+  ),
 })
 
 export type ProjectData = z.infer<typeof ProjectDataValidation>
 
 const projectDomains = [
-  'CRTE',
-  'PVD',
   'Accès au numérique',
   'Services au public',
   'Transport et mobilités',
   'Transition écologique',
   'Tiers-lieux',
-  'Soutien aux associations',
   'Logement et cadre de vie',
   'Développement économique et industriel',
   'Ingénierie sur mesure',

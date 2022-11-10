@@ -66,6 +66,7 @@ model VerificationToken {
 
 model Project {
   id          String       @id @db.Uuid
+  reference   String       @unique
   name        String
   quality     String
   email       String
@@ -78,6 +79,21 @@ model Project {
   tech        String
   attachments Attachment[]
   created     DateTime     @default(now())
+  community   Community    @relation(fields: [communityId], references: [id])
+  communityId String       @db.Uuid
+}
+
+model Community {
+  id                            String    @id @default(uuid()) @db.Uuid
+  nic                           String
+  siren                         String
+  siret                         String
+  codeCommuneEtablissement      String
+  codePostalEtablissement       String
+  libelleCommuneEtablissement   String
+  categorieJuridiqueUniteLegale String
+  denominationUniteLegale       String
+  Project                       Project[]
 }
 
 model Attachment {

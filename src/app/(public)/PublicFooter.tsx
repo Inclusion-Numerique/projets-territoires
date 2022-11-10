@@ -61,6 +61,13 @@ const PublicFooter = () => {
                 </a>
               </li>
             </ul>
+            <Link
+              href="/auth/signin"
+              target="_self"
+              className="fr-ml-4v fr-btn fr-btn--sm fr-btn--icon-left fr-btn--tertiary fr-icon-user-setting-line"
+            >
+              Espace ANCT
+            </Link>
           </div>
         </div>
         <div className="fr-footer__bottom">

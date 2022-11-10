@@ -2,8 +2,9 @@ import { initTRPC, TRPCError } from '@trpc/server'
 import { RpcContext } from '@pt/server/rpc/rpcContext'
 import { SessionUser } from '@pt/auth/sessionUser'
 import { ProjectDataValidation } from '@pt/project/project'
-import { createProjectRecord } from '@pt/grist/grist'
 import { customAlphabet } from 'nanoid'
+import { prismaClient } from '@pt/prisma'
+import { v4 } from 'uuid'
 
 const t = initTRPC.context<RpcContext>().create()
 
@@ -30,6 +31,8 @@ export const appRouter = t.router({
     .mutation(
       async ({
         input: {
+          reference,
+          community,
           quality,
           name,
           description,
@@ -40,29 +43,31 @@ export const appRouter = t.router({
           tech,
           solution,
           dates,
-          files,
+          attachments,
         },
         ctx: { user },
       }) => {
-        const reference = referenceGenerator()
-        await createProjectRecord({
-          Référence: reference,
-          Date: new Date().toISOString(),
-          Technique: tech,
-          Solution: solution,
-          Email: email,
-          Dates: dates,
-          Domaine: domain,
-          Description: description,
-          Téléphone: phone,
-          Partenaires: partners,
-          Qualité: quality,
-          Test: false,
-          Nom: name,
-          'Pièces jointes': files,
+        const id = v4()
+        const project = await prismaClient.project.create({
+          data: {
+            id,
+            reference,
+            community: { create: community },
+            quality,
+            name,
+            description,
+            domain,
+            email,
+            partners,
+            phone,
+            tech,
+            solution,
+            dates,
+            attachments: { createMany: { data: attachments } },
+          },
         })
 
-        return { quality, name }
+        return { project }
       },
     ),
 })

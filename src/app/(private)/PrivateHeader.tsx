@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { DsfrThemeSwitcher } from '@pt/dsfr/DsfrThemeSwitcher'
 import { UserMenu } from '@pt/app/(private)/UserMenu'
 import { SessionUser } from '@pt/auth/sessionUser'
 
@@ -47,9 +46,6 @@ const PrivateHeader = ({ user }: { user: SessionUser }) => {
             <div className="fr-header__tools">
               <div className="fr-header__tools-links">
                 <ul className="fr-links-group">
-                  <li>
-                    <DsfrThemeSwitcher />
-                  </li>
                   <li>
                     <UserMenu user={user} />
                   </li>

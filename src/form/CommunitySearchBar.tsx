@@ -4,38 +4,75 @@ import { ChangeEventHandler, useDeferredValue, useState } from 'react'
 import styled from 'styled-components'
 import { useQuery } from '@tanstack/react-query'
 import { Spinner } from '@pt/ui/Spinner'
-import { searchCommunity } from '@pt/siren/siren'
+import {
+  categoriesJuridiques,
+  Etablissement,
+  searchCommunity,
+  SirenCommunitySearchResponse,
+} from '@pt/siren/siren'
+import { ProjectData } from '@pt/project/project'
 
 const SearchResult = styled.div`
   width: 100%;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--blue-cumulus-850-200);
 
   &:hover {
-    font-weight: 600;
+    background-color: var(--blue-cumulus-925-125);
   }
 `
 
-export const CommunitySearchBar = () => {
+export const CommunitySearchBar = ({
+  onSelect,
+  disabled,
+  placeholder,
+  id,
+}: {
+  id?: string
+  disabled?: boolean
+  placeholder?: string
+  onSelect: (value: ProjectData['community']) => void | Promise<void>
+}) => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const deferredQuery = useDeferredValue(searchQuery)
   const queryEnabled = deferredQuery.trim().length >= 2
 
-  const { data, isLoading, isError, error } = useQuery(
-    ['community', deferredQuery],
-    () => searchCommunity(deferredQuery),
-    {
-      enabled: queryEnabled,
-    },
-  )
+  const { data, isLoading, isError, error } = useQuery<
+    SirenCommunitySearchResponse,
+    Error
+  >(['community', deferredQuery], () => searchCommunity(deferredQuery), {
+    enabled: queryEnabled,
+    keepPreviousData: true,
+  })
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setSearchQuery(event.target.value)
   }
 
-  const onClick = () => {
-    console.log('CLICK')
+  const onClick = ({
+    nic,
+    siret,
+    siren,
+    uniteLegale,
+    adresseEtablissement,
+  }: Etablissement) => {
+    const value: ProjectData['community'] = {
+      siret,
+      siren,
+      nic,
+      ...uniteLegale,
+      ...adresseEtablissement,
+    }
+    console.log('CLICK', value)
+    onSelect(value)
+    setSearchQuery('')
   }
+
+  console.log('SEARCH', { deferredQuery, data, isLoading, isError, error })
 
   return (
     <div
@@ -44,14 +81,12 @@ export const CommunitySearchBar = () => {
       id="header-search"
       role="search"
     >
-      <label className="fr-label" htmlFor="search">
-        Recherche
-      </label>
       <input
         className="fr-input"
-        placeholder="Rechercher"
+        placeholder={placeholder ?? 'Rechercher'}
         type="search"
-        id="search"
+        disabled={disabled}
+        id={id}
         autoFocus
         onChange={onChange}
       />
@@ -70,26 +105,48 @@ export const CommunitySearchBar = () => {
             alignItems: 'center',
             borderRadius: '0 0 4px 4px',
           }}
-          className="fr-background-default--grey fr-card--shadow fr-px-4v fr-py-2v"
+          className="fr-background-default--grey fr-card--shadow fr-py-2v"
         >
           {isLoading ? (
             <div className="fr-mx-auto">
               <Spinner size="sm" />
             </div>
           ) : null}
-          {isError ? <p>{error.message}</p> : null}
+          {error ? <p>{error.message}</p> : null}
           {data ? (
-            data.TODO.length === 0 ? (
+            data.etablissements.length === 0 ? (
               <p>Aucun résultat pour &quot;{deferredQuery}&quot;</p>
             ) : (
               <div style={{ width: '100%' }}>
-                {data.TODO.map((WHATISTHAT) => (
+                {data.etablissements.map((etablissement) => (
                   <SearchResult
-                    onClick={onClick(WHATISTHAT)}
-                    key={WHATISTHAT.id}
-                    className="fr-py-4v"
+                    onClick={() => onClick(etablissement)}
+                    key={etablissement.siret}
+                    className="fr-py-2v fr-px-4v"
                   >
-                    {WHATISTHAT.name}
+                    <span style={{ flex: 1 }}>
+                      <strong>
+                        {etablissement.uniteLegale.denominationUniteLegale}
+                      </strong>
+                      <span className="fr-my-0 fr-ml-2v fr-text--sm">
+                        {
+                          etablissement.adresseEtablissement
+                            .codePostalEtablissement
+                        }{' '}
+                        {
+                          etablissement.adresseEtablissement
+                            .libelleCommuneEtablissement
+                        }
+                      </span>
+                    </span>
+                    <span className="fr-badge fr-badge--sm fr-badge--blue-cumulus">
+                      {
+                        categoriesJuridiques[
+                          etablissement.uniteLegale
+                            .categorieJuridiqueUniteLegale
+                        ]
+                      }
+                    </span>
                   </SearchResult>
                 ))}
               </div>

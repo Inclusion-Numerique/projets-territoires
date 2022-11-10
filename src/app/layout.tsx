@@ -5,7 +5,7 @@ import DsfrClient from '@pt/dsfr/dsfrClient'
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="fr" data-fr-theme="system" data-fr-scheme="system">
+    <html lang="fr" data-fr-theme="light" data-fr-scheme="light">
       <head>
         <meta charSet="utf-8" />
         <title>Territoires de solutions</title>
@@ -21,12 +21,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           rel="manifest"
           href="/favicon/manifest.webmanifest"
           crossOrigin="use-credentials"
-        />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `var theme = localStorage.getItem('scheme')||(window&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-fr-theme',theme);document.documentElement.setAttribute('data-fr-scheme', theme);localStorage.setItem('scheme', theme)`,
-          }}
         />
         <meta name="description" content="Territoires de solutions" />
         <link rel="icon" href="/favicon.ico" />
