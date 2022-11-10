@@ -1,7 +1,7 @@
 import { SessionUser } from '@pt/auth/sessionUser'
 import { FunctionComponent, ReactNode } from 'react'
 import PrivateHeader from '@pt/app/(private)/PrivateHeader'
-import PrivateFooter from '@pt/app/(private)/PrivateFooter'
+import PublicFooter from '@pt/app/(public)/PublicFooter'
 
 const PrivateLayoutContent: FunctionComponent<{
   user: SessionUser
@@ -15,7 +15,7 @@ const PrivateLayoutContent: FunctionComponent<{
       <div className="fr-container" style={{ flex: 1 }}>
         <div>{children}</div>
       </div>
-      <PrivateFooter />
+      <PublicFooter />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import z from 'zod'
+import { Options } from '@pt/utils/options'
 
 /**
  * Nom et prénom du point de contact
@@ -63,3 +64,27 @@ export const ProjectDataValidation = z.object({
 })
 
 export type ProjectData = z.infer<typeof ProjectDataValidation>
+
+const projectDomains = [
+  'CRTE',
+  'PVD',
+  'Accès au numérique',
+  'Services au public',
+  'Transport et mobilités',
+  'Transition écologique',
+  'Tiers-lieux',
+  'Soutien aux associations',
+  'Logement et cadre de vie',
+  'Développement économique et industriel',
+  'Ingénierie sur mesure',
+  'Infrastructures locales',
+  'Inclusion sociale',
+  'Éducation et jeunesse',
+  'Attractivité et dynamisme territorial',
+]
+
+// Labels and values are the same
+export const domainOptions: Options = projectDomains.map((domain) => ({
+  name: domain,
+  value: domain,
+}))

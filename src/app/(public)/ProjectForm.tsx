@@ -3,13 +3,18 @@ import { Controller, useForm } from 'react-hook-form'
 import { trpc } from '@pt/trpc'
 import { zodResolver } from '@hookform/resolvers/zod/dist/zod'
 import { withTrpc } from '@pt/withTrpc'
-import { ProjectData, ProjectDataValidation } from '@pt/project/project'
+import {
+  domainOptions,
+  ProjectData,
+  ProjectDataValidation,
+} from '@pt/project/project'
 import { InputFormField } from '@pt/form/InputFormField'
 import { OnDropCallback } from '@pt/form/UploadDropzone'
 import { useMemo, useState } from 'react'
 import axios, { AxiosError } from 'axios'
 import AttachmentUploader from '@pt/attachments/AttachmentUploader'
 import { generateReference } from '@pt/project/generateReference'
+import { RadioFormField } from '@pt/form/RadioFormField'
 
 type FormUploadedFile =
   | {
@@ -143,12 +148,12 @@ const ProjectForm = () => {
               path="phone"
               type="phone"
             />
-            <InputFormField
+            <RadioFormField
               label="Votre idée concerne le domaine suivant"
               disabled={fieldsDisabled}
+              options={domainOptions}
               control={control}
               path="domain"
-              type="text"
             />
             <InputFormField
               label="Nom de votre solution"
