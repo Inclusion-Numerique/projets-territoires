@@ -112,7 +112,7 @@ const ProjectForm = () => {
                 disabled={fieldsDisabled}
                 control={control}
                 path="solution"
-                type="textarea"
+                type="text"
               />
               <InputFormField
                 label="Pouvez-vous décrire votre projet en quelques lignes ?"

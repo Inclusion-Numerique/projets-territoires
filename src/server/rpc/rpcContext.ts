@@ -1,11 +1,10 @@
 import { inferAsyncReturnType, TRPCError } from '@trpc/server'
 import { CreateNextContextOptions } from '@trpc/server/src/adapters/next'
 import { sessionUserFromSessionToken } from '@pt/auth/sessionUserFromSessionToken'
+import { sessionTokenFromCookies } from '@pt/security/authentication'
 
 export const createContext = async ({ req, res }: CreateNextContextOptions) => {
-  const sessionToken =
-    req.cookies['__Secure-next-auth.session-token'] ??
-    req.cookies['next-auth.session-token']
+  const sessionToken = sessionTokenFromCookies(req.cookies)
 
   if (!sessionToken) {
     return { req, res, user: null }

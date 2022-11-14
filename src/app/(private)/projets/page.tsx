@@ -1,4 +1,10 @@
+import { prismaClient } from '@pt/prisma'
+import { projectsCsvFilename } from '@pt/project/projectsDownload'
+
 const Stats = async () => {
+  const projectsCount = await prismaClient.project.count()
+  const downloadFilename = projectsCsvFilename()
+
   return (
     <>
       <div className="fr-grid-row fr-pt-8v">
@@ -10,11 +16,18 @@ const Stats = async () => {
             <div className="fr-card__body">
               <div className="fr-card__content">
                 <h4 className="fr-card__title">
-                  <span className="fr-icon-warning-line fr-mr-2v" />
-                  Cet espace est en construction
+                  <span className="fr-icon-folder-2-fill fr-mr-2v" />
+                  Projets
                 </h4>
                 <div className="fr-card__desc fr-pt-4v">
-                  Vous pourrez consulter les projets ici.
+                  <p>{projectsCount} projets ont été enregistrés.</p>
+                  <a
+                    className="fr-btn fr-btn--icon-left fr-icon-download-line"
+                    href="/api/projects/download"
+                    download={downloadFilename}
+                  >
+                    Télécharger au format CSV
+                  </a>
                 </div>
               </div>
             </div>
