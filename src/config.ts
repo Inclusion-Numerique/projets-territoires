@@ -24,5 +24,4 @@ export const PrivateConfig = {
 
 export const PublicConfig = {
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
-  sirenApiKey: process.env.NEXT_PUBLIC_SIREN_API_KEY,
 }
