@@ -123,7 +123,7 @@ export default function HomePage() {
                     aria-controls="accordion-1"
                     data-fr-js-collapse-button="true"
                   >
-                    Quelles est la première question ?
+                    Quelle est la première question ?
                   </button>
                 </h3>
                 <div
@@ -143,7 +143,7 @@ export default function HomePage() {
                     aria-controls="accordion-2"
                     data-fr-js-collapse-button="true"
                   >
-                    Quelles est la seconde question ?
+                    Quelle est la seconde question ?
                   </button>
                 </h3>
                 <div
