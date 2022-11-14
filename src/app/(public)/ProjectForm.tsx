@@ -116,7 +116,7 @@ const ProjectForm = () => {
   return (
     <div className="fr-card" style={{ width: '100%' }}>
       <div className="fr-card__body">
-        {createProject.isSuccess || true ? (
+        {createProject.isSuccess ? (
           <div className="fr-card__content">
             <h2>Merci pour votre participation !</h2>
             <p className="fr-text--lead fr-mb-3w">
