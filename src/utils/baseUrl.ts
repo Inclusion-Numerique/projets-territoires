@@ -10,6 +10,13 @@ export const getBaseUrl = () => {
   }
   if (process.env.APP) {
     // for Scalingo
+
+    // If the app is the prod app (not a preview app for a PR or other branch)
+    // The base URL is the production url, else it is the preview deployment url
+    if (process.env.APP === process.env.PRODUCTION_APP) {
+      return `https://${process.env.PRODUCTION_URL}`
+    }
+
     return `https://${process.env.APP}.osc-fr1.scalingo.io`
   }
   // assume localhost

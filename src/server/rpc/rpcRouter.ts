@@ -47,8 +47,8 @@ export const appRouter = t.router({
             reference,
             community: {
               connectOrCreate: {
-                where: { siret: community.siret },
-                create: community,
+                where: { id: community.id },
+                create: { ...community, zipcodes: community.zipcodes ?? [] },
               },
             },
             quality,

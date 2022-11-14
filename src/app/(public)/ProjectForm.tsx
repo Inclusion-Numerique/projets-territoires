@@ -9,22 +9,12 @@ import {
   ProjectDataValidation,
 } from '@pt/project/project'
 import { InputFormField } from '@pt/form/InputFormField'
-import { OnDropCallback } from '@pt/form/UploadDropzone'
-import { useMemo, useState } from 'react'
-import axios, { AxiosError } from 'axios'
+import { useMemo } from 'react'
 import AttachmentUploader from '@pt/attachments/AttachmentUploader'
 import { generateReference } from '@pt/project/generateReference'
 import { RadioFormField } from '@pt/form/RadioFormField'
 import { CommunitySearchFormField } from '@pt/form/CommunitySearchFormField'
 import Link from 'next/link'
-
-type FormUploadedFile =
-  | {
-      file: File
-      status: 'uploading'
-    }
-  | { file: File; status: 'uploaded'; attachmentId: number }
-  | { file: File; status: 'error'; error: string }
 
 const ProjectForm = () => {
   const createProject = trpc.createProject.useMutation()
@@ -52,65 +42,6 @@ const ProjectForm = () => {
     }
   }
 
-  const [uploadedFiles, setUploadedFiles] = useState<FormUploadedFile[]>([])
-  const filesAreUploading = !!uploadedFiles.find(
-    (file) => file.status === 'uploading',
-  )
-  const filesAreInError = !!uploadedFiles.find(
-    (file) => file.status === 'error',
-  )
-
-  const onDrop: OnDropCallback = async (
-    acceptedFiles: File[],
-    fileRejections,
-    event,
-  ) => {
-    // TODO File rejection
-
-    console.log('ACCEPTED FILES', acceptedFiles)
-    setUploadedFiles(
-      acceptedFiles.map((file) => ({ file, status: 'uploading' })),
-    )
-
-    const result: FormUploadedFile[] = await Promise.all(
-      acceptedFiles.map(async (file, index): Promise<FormUploadedFile> => {
-        const uploadData = new FormData()
-        uploadData.append('file', file)
-
-        try {
-          const uploaded = await axios.post<{ attachments: number[] }>(
-            `/api/upload`,
-            uploadData,
-            {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-              onUploadProgress: (progressEvent) =>
-                console.log('upload progress', progressEvent.loaded),
-            },
-          )
-
-          return {
-            file,
-            status: 'uploaded',
-            attachmentId: uploaded.data.attachments[0],
-          }
-        } catch (err) {
-          if (!(err instanceof AxiosError)) {
-            throw new Error('Unexpected error')
-          }
-          return {
-            file,
-            status: 'error',
-            error: err.message,
-          }
-        }
-      }),
-    )
-
-    setUploadedFiles(result)
-  }
-
   const fieldsDisabled = createProject.isLoading
 
   return (
@@ -118,7 +49,7 @@ const ProjectForm = () => {
       <div className="fr-card__body">
         {createProject.isSuccess ? (
           <div className="fr-card__content">
-            <h2>Merci pour votre participation !</h2>
+            <h2>Merci pour votre participation !</h2>
             <p className="fr-text--lead fr-mb-3w">
               Nous avons bien enregistré votre projet.
             </p>

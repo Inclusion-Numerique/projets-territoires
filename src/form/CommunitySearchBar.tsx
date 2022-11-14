@@ -40,7 +40,7 @@ export const CommunitySearchBar = ({
   const deferredQuery = useDeferredValue(searchQuery)
   const queryEnabled = deferredQuery.trim().length >= 2
 
-  const { data, isLoading, isError, error } = useQuery<
+  const { data, isLoading, error } = useQuery<
     SirenCommunitySearchResponse,
     Error
   >(['community', deferredQuery], () => searchCommunity(deferredQuery), {
@@ -63,8 +63,6 @@ export const CommunitySearchBar = ({
     onSelect(value)
     setSearchQuery('')
   }
-
-  console.log('SEARCH', { deferredQuery, data, isLoading, isError, error })
 
   return (
     <div
@@ -117,8 +115,12 @@ export const CommunitySearchBar = ({
                     className="fr-py-2v fr-px-4v"
                   >
                     <span style={{ flex: 1 }}>
-                      <strong>{result.text}</strong>
+                      <strong>{result.name}</strong>
+                      <span className="fr-my-0 fr-ml-2v fr-text--sm">
+                        {result.zipcodes?.join(', ')}
+                      </span>
                     </span>
+
                     <span className="fr-badge fr-badge--sm fr-badge--blue-cumulus">
                       {result.scale}
                     </span>

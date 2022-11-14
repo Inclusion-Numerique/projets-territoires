@@ -96,7 +96,7 @@ const AttachmentUploader = ({
           <input {...getInputProps()} />
           <p className="" style={{ pointerEvents: 'none' }}>
             Vous pouvez <strong>glisser-déposer</strong> des pièces jointes ici,{' '}
-            <strong>ou cliquer</strong> pour selectionner des fichiers.
+            <strong>ou cliquer</strong> pour sélectionner des fichiers.
           </p>
         </div>
       </div>

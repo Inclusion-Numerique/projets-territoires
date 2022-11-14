@@ -58,6 +58,9 @@ export function CommunitySearchFormField<T extends FieldValues>({
                 >
                   <span style={{ flex: 1 }}>
                     <strong>{community.name}</strong>
+                    <span className="fr-my-0 fr-ml-2v fr-text--sm">
+                      {community.zipcodes?.join(', ')}
+                    </span>
                   </span>
                   <span className="fr-badge fr-badge--sm fr-badge--blue-cumulus fr-ml-2v">
                     {community.scale}

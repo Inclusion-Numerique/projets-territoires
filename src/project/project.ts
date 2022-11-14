@@ -22,7 +22,7 @@ export const ProjectDataValidation = z.object({
       name: z.string(),
       text: z.string(),
       scale: z.string(),
-      zipcodes: z.array(string()),
+      zipcodes: z.array(string()).nullable(),
     },
     {
       required_error: 'Veuillez renseigner la collectivité.',
