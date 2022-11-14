@@ -1,4 +1,5 @@
 import { PublicConfig } from '@pt/config'
+import axios from 'axios'
 
 export type SirenCommunitySearchResponse = {
   header: {
@@ -64,7 +65,7 @@ const legalCategorySearch = Object.keys(categoriesJuridiques)
 export const searchCommunity = async (
   searchQuery: string,
 ): Promise<SirenCommunitySearchResponse> => {
-  const result = await fetch(
+  const result = await axios.get(
     `https://api.insee.fr/entreprises/sirene/V3/siret?q=raisonSociale:${encodeURIComponent(
       `"${searchQuery.trim()}"`,
     )} AND (${legalCategorySearch})&nombre=${resultLength}&champs=${searchResultFields.join(
@@ -75,7 +76,6 @@ export const searchCommunity = async (
         Accept: 'application/json',
         Authorization: `Bearer ${PublicConfig.sirenApiKey}`,
       },
-      cache: 'no-cache',
     },
   )
 
@@ -87,5 +87,5 @@ export const searchCommunity = async (
     )
   }
 
-  return result.json()
+  return result.data
 }

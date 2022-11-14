@@ -60,7 +60,7 @@ const config = {
   testEnvironment: 'jest-environment-jsdom',
   transform: {
     '^.+\\.(js|jsx|ts|tsx|mjs)$': [
-      '/Users/h/dev/anct/projets-territoires/node_modules/next/dist/build/swc/jest-transformer.js',
+      '<rootDir>/node_modules/next/dist/build/swc/jest-transformer.js',
       {
         nextConfig: undefined,
         jsConfig: undefined,
