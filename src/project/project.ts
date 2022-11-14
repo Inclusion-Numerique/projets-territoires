@@ -1,4 +1,4 @@
-import z from 'zod'
+import z, { string } from 'zod'
 import { Options } from '@pt/utils/options'
 
 /**
@@ -18,14 +18,11 @@ import { Options } from '@pt/utils/options'
 export const ProjectDataValidation = z.object({
   community: z.object(
     {
-      nic: z.string(),
-      siren: z.string(),
-      siret: z.string(),
-      codeCommuneEtablissement: z.string(),
-      codePostalEtablissement: z.string(),
-      libelleCommuneEtablissement: z.string(),
-      categorieJuridiqueUniteLegale: z.string(),
-      denominationUniteLegale: z.string(),
+      id: z.string(),
+      name: z.string(),
+      text: z.string(),
+      scale: z.string(),
+      zipcodes: z.array(string()),
     },
     {
       required_error: 'Veuillez renseigner la collectivité.',

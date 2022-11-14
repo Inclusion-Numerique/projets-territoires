@@ -1,9 +1,7 @@
 import { HTMLInputTypeAttribute } from 'react'
 import { Control, Controller, FieldValues } from 'react-hook-form'
 import { FieldPath } from 'react-hook-form/dist/types/path'
-import TextareaAutosize from 'react-textarea-autosize'
 import { CommunitySearchBar } from '@pt/form/CommunitySearchBar'
-import { CategorieJuridique, categoriesJuridiques } from '@pt/siren/siren'
 import { ProjectData } from '@pt/project/project'
 
 // View design options here https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie
@@ -59,14 +57,10 @@ export function CommunitySearchFormField<T extends FieldValues>({
                   }}
                 >
                   <span style={{ flex: 1 }}>
-                    <strong>{community.denominationUniteLegale}</strong>
+                    <strong>{community.name}</strong>
                   </span>
                   <span className="fr-badge fr-badge--sm fr-badge--blue-cumulus fr-ml-2v">
-                    {
-                      categoriesJuridiques[
-                        community.categorieJuridiqueUniteLegale as CategorieJuridique
-                      ]
-                    }
+                    {community.scale}
                   </span>
                 </button>
               </div>

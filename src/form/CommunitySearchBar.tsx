@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { useQuery } from '@tanstack/react-query'
 import { Spinner } from '@pt/ui/Spinner'
 import {
-  categoriesJuridiques,
   Etablissement,
   searchCommunity,
   SirenCommunitySearchResponse,
@@ -53,21 +52,14 @@ export const CommunitySearchBar = ({
     setSearchQuery(event.target.value)
   }
 
-  const onClick = ({
-    nic,
-    siret,
-    siren,
-    uniteLegale,
-    adresseEtablissement,
-  }: Etablissement) => {
+  const onClick = ({ id, name, text, scale, zipcodes }: Etablissement) => {
     const value: ProjectData['community'] = {
-      siret,
-      siren,
-      nic,
-      ...uniteLegale,
-      ...adresseEtablissement,
+      id,
+      name,
+      text,
+      scale,
+      zipcodes,
     }
-    console.log('CLICK', value)
     onSelect(value)
     setSearchQuery('')
   }
@@ -114,38 +106,21 @@ export const CommunitySearchBar = ({
           ) : null}
           {error ? <p>{error.message}</p> : null}
           {data ? (
-            data.etablissements.length === 0 ? (
+            data.results.length === 0 ? (
               <p>Aucun résultat pour &quot;{deferredQuery}&quot;</p>
             ) : (
               <div style={{ width: '100%' }}>
-                {data.etablissements.map((etablissement) => (
+                {data.results.map((result) => (
                   <SearchResult
-                    onClick={() => onClick(etablissement)}
-                    key={etablissement.siret}
+                    onClick={() => onClick(result)}
+                    key={result.id}
                     className="fr-py-2v fr-px-4v"
                   >
                     <span style={{ flex: 1 }}>
-                      <strong>
-                        {etablissement.uniteLegale.denominationUniteLegale}
-                      </strong>
-                      <span className="fr-my-0 fr-ml-2v fr-text--sm">
-                        {
-                          etablissement.adresseEtablissement
-                            .codePostalEtablissement
-                        }{' '}
-                        {
-                          etablissement.adresseEtablissement
-                            .libelleCommuneEtablissement
-                        }
-                      </span>
+                      <strong>{result.text}</strong>
                     </span>
                     <span className="fr-badge fr-badge--sm fr-badge--blue-cumulus">
-                      {
-                        categoriesJuridiques[
-                          etablissement.uniteLegale
-                            .categorieJuridiqueUniteLegale
-                        ]
-                      }
+                      {result.scale}
                     </span>
                   </SearchResult>
                 ))}
