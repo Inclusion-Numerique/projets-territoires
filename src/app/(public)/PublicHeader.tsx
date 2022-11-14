@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PublicHeaderNav } from '@pt/app/(public)/PublicHeaderNav'
 
 const PublicHeader = () => {
   return (
@@ -48,6 +49,34 @@ const PublicHeader = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        className="fr-header__menu fr-modal"
+        id="fr-menu-mobile"
+        data-fr-js-modal="true"
+        data-fr-js-header-modal="true"
+      >
+        <div className="fr-container">
+          <button
+            type="button"
+            className="fr-btn--close fr-btn"
+            aria-controls="fr-menu-mobile"
+            data-fr-js-modal-button="true"
+          >
+            Fermer
+          </button>
+          <div className="fr-header__menu-links">
+            <ul className="fr-btns-group" data-fr-js-header-links="true"></ul>
+          </div>
+          <nav
+            className="fr-nav"
+            id="fr-navigation"
+            aria-label="Menu principal"
+            data-fr-js-navigation="true"
+          >
+            <PublicHeaderNav />
+          </nav>
         </div>
       </div>
       <div

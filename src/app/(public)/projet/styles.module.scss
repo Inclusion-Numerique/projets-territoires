@@ -1,0 +1,20 @@
+.cover {
+  background-size: cover;
+  background-position: center;
+  height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url('/images/village.jpg') ;
+}
+
+.jumboText {
+  color: white;
+  margin-top: -17vh;
+}
+
+.formCard {
+  margin-top: -30vh;
+  border: 1px solid var(--border-default-grey);
+}

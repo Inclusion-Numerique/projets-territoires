@@ -23,6 +23,6 @@ export const PrivateConfig = {
 }
 
 export const PublicConfig = {
-  contactEmail: 'hugues.maignol.prestataire@anct.gouv.fr',
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
   sirenApiKey: process.env.NEXT_PUBLIC_SIREN_API_KEY,
 }

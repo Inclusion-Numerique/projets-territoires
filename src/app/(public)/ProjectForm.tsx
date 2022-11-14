@@ -117,10 +117,14 @@ const ProjectForm = () => {
   const fieldsDisabled = isLoading
 
   return (
-    <div className="fr-card fr-background-alt--grey" style={{ width: '100%' }}>
+    <div className="fr-card" style={{ width: '100%' }}>
       <div className="fr-card__body">
         <div className="fr-card__content">
-          <h3>Votre projet</h3>
+          <h2>Vous êtes maire ?</h2>
+          <p className="fr-text--lead fr-mb-3w">
+            Ce formulaire vous permet de renseigner les projets de votre
+            territoire, en quelques clics.
+          </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <CommunitySearchFormField
               label="Collectivité"

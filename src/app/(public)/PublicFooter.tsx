@@ -60,14 +60,35 @@ const PublicFooter = () => {
                   service-public.fr
                 </a>
               </li>
+              <li className="fr-footer__content-item">
+                <a
+                  href="https://data.gouv.fr"
+                  className="fr-footer__content-link"
+                >
+                  data.gouv.fr
+                </a>
+              </li>
+              <li className="fr-footer__content-item">
+                <a
+                  href="https://beta.gouv.fr"
+                  className="fr-footer__content-link"
+                >
+                  beta.gouv.fr
+                </a>
+              </li>
             </ul>
-            <Link
-              href="/auth/signin"
-              target="_self"
-              className="fr-ml-4v fr-btn fr-btn--sm fr-btn--icon-left fr-btn--tertiary fr-icon-user-setting-line"
+            <div
+              className="fr-grid-row fr-grid-row fr-mt-4v"
+              style={{ width: '100%' }}
             >
-              Espace ANCT
-            </Link>
+              <Link
+                href="/auth/signin"
+                target="_self"
+                className="fr-btn fr-btn--sm fr-btn--icon-left fr-btn--tertiary fr-icon-user-setting-line"
+              >
+                Espace ANCT
+              </Link>
+            </div>
           </div>
         </div>
         <div className="fr-footer__bottom">
