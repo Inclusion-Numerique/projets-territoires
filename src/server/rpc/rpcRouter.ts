@@ -39,7 +39,6 @@ export const appRouter = t.router({
           dates,
           attachments,
         },
-        ctx: { user },
       }) => {
         const id = v4()
         const project = await prismaClient.project.create({
@@ -64,6 +63,7 @@ export const appRouter = t.router({
             dates,
             attachments: { createMany: { data: attachments } },
           },
+          include: { attachments: true, community: true },
         })
 
         return { project }

@@ -66,7 +66,7 @@ export function InputFormField<T extends FieldValues>({
               placeholder={placeholder}
               onBlur={onBlur}
               onChange={onChange}
-              value={value}
+              value={value ?? ''}
               ref={ref}
               multiple={multiple}
             />
