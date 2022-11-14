@@ -1,7 +1,7 @@
 import { prismaClient } from '@pt/prisma'
 import { projectsCsvFilename } from '@pt/project/projectsDownload'
 
-const Stats = async () => {
+const ProjectsPage = async () => {
   const projectsCount = await prismaClient.project.count()
   const downloadFilename = projectsCsvFilename()
 
@@ -37,4 +37,4 @@ const Stats = async () => {
     </>
   )
 }
-export default Stats
+export default ProjectsPage

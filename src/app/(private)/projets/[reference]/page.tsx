@@ -2,7 +2,7 @@ import { prismaClient } from '@pt/prisma'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
-const Stats = async ({
+const ProjectPage = async ({
   params: { reference },
 }: {
   params: { reference: string }
@@ -64,4 +64,4 @@ const Stats = async ({
     </>
   )
 }
-export default Stats
+export default ProjectPage
