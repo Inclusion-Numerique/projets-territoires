@@ -1,11 +1,26 @@
 {
   "CORSRules": [
     {
-      "AllowedOrigins": ["https://projets-territoires.osc-fr1.scalingo.io", "http://localhost:3000"],
-      "AllowedHeaders": ["*"],
-      "AllowedMethods": ["GET", "HEAD", "POST", "PUT", "DELETE"],
+      "AllowedOrigins": [
+        "https://projets-territoires.osc-fr1.scalingo.io",
+        "https://territoires-de-solutions.anct.gouv.fr",
+        "http://localhost:3000",
+        "https://*.osc-fr1.scalingo.io"
+      ],
+      "AllowedHeaders": [
+        "*"
+      ],
+      "AllowedMethods": [
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
       "MaxAgeSeconds": 3000,
-      "ExposeHeaders": ["Etag"]
+      "ExposeHeaders": [
+        "Etag"
+      ]
     }
   ]
 }
