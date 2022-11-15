@@ -113,7 +113,8 @@ export default function HomePage() {
                     aria-controls="accordion-1"
                     data-fr-js-collapse-button="true"
                   >
-                    Quelle est la première question ?
+                    Quel type de projets puis-je partager sur cette
+                    plateforme&nbsp;?
                   </button>
                 </h3>
                 <div
@@ -121,8 +122,16 @@ export default function HomePage() {
                   id="accordion-1"
                   data-fr-js-collapse="true"
                 >
-                  <p>Réponse à cette question.</p>
-                  <p>En construction.</p>
+                  <p>
+                    À priori, toutes les thématiques sont couvertes. L’idée est
+                    de montrer une solution innovante de par sa conception, sa
+                    mise en œuvre ou encore ses parties prenantes.
+                  </p>
+                  <p>
+                    Si vous avec une solution à fort impact sur votre territoire
+                    et que vous pensez qu’elle peut se répliquer, cette
+                    plateforme est l’endroit idéal pour la partager.
+                  </p>
                 </div>
               </section>
               <section className="fr-accordion">
@@ -133,7 +142,7 @@ export default function HomePage() {
                     aria-controls="accordion-2"
                     data-fr-js-collapse-button="true"
                   >
-                    Quelle est la seconde question ?
+                    Et si j’ai un projet et non une solution&nbsp;?
                   </button>
                 </h3>
                 <div
@@ -141,8 +150,25 @@ export default function HomePage() {
                   id="accordion-2"
                   data-fr-js-collapse="true"
                 >
-                  <p>Réponse à cette question.</p>
-                  <p>En construction.</p>
+                  <p>
+                    Si vous avez un projet, la projetothèque est là pour vous
+                    inspirer et, pourquoi pas, en améliorer un ou plusieurs
+                    aspects.
+                  </p>
+                  <p>
+                    Si votre souhait est d’avoir connaissance des offres
+                    d’ingénierie ou de financement, le site du Ministère
+                    Aides-territoires{' '}
+                    <a
+                      href="https://aides-territoires.beta.gouv.fr"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="fr-link"
+                    >
+                      https://aides-territoires.beta.gouv.fr
+                    </a>{' '}
+                    est l’endroit idéal.
+                  </p>
                 </div>
               </section>
             </div>
