@@ -2,6 +2,8 @@ import '@pt/styles/app.scss'
 import { PropsWithChildren } from 'react'
 import DsfrClient from '@pt/dsfr/dsfrClient'
 
+const fontsToPreload = ['Marianne-Regular', 'Marianne-Bold', 'Marianne-Medium']
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="fr" data-fr-theme="light" data-fr-scheme="light">
@@ -23,6 +25,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
         />
         <meta name="description" content="Territoires de solutions" />
         <link rel="icon" href="/favicon.ico" />
+        {fontsToPreload.map((font) => (
+          <link
+            key={font}
+            rel="preload"
+            href={`/dsfr/fonts/${font}.woff2`}
+            as="font"
+            type="font/woff2"
+          />
+        ))}
       </head>
       <body>{children}</body>
       <DsfrClient />
