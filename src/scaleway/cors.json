@@ -5,6 +5,7 @@
         "https://projets-territoires.osc-fr1.scalingo.io",
         "https://territoires-de-solutions.anct.gouv.fr",
         "http://localhost:3000",
+        "http://localhost",
         "https://*.osc-fr1.scalingo.io"
       ],
       "AllowedHeaders": [
