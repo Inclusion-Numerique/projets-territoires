@@ -78,7 +78,7 @@ export default function HomePage() {
             <div className="fr-col-12">
               <h2>Découvrez des solutions partout en France</h2>
             </div>
-            {projectCategoriesLinks.map(({ url, image, title }) => (
+            {projectCategoriesLinks.map(({ url, title }) => (
               <div key={title} className="fr-col-12 fr-col-md-6 fr-col-lg-4">
                 <div className="fr-tile fr-tile--horizontal fr-enlarge-link">
                   <div className="fr-tile__body fr-m-4v">
@@ -88,16 +88,6 @@ export default function HomePage() {
                       </a>
                     </h4>
                   </div>
-                  {/*<div className="fr-tile__img">*/}
-                  {/*  <picture>*/}
-                  {/*    <img*/}
-                  {/*      src={image}*/}
-                  {/*      className="fr-responsive-img"*/}
-                  {/*      alt={title}*/}
-                  {/*      data-fr-js-ratio="true"*/}
-                  {/*    />*/}
-                  {/*  </picture>*/}
-                  {/*</div>*/}
                 </div>
               </div>
             ))}
