@@ -30,9 +30,7 @@ export function CommunitySearchFormField<T extends FieldValues>({
       render={({
         field: { onChange, onBlur, value, name, ref },
         fieldState: { invalid, isTouched, isDirty, error },
-        formState,
       }) => {
-        console.log('THE VALUE', value)
         const community = value as ProjectData['community']
 
         return (

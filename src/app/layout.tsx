@@ -1,5 +1,4 @@
-import '@pt/styles/global.css'
-import '@pt/dsfr/dsfrCss'
+import '@pt/styles/app.scss'
 import { PropsWithChildren } from 'react'
 import DsfrClient from '@pt/dsfr/dsfrClient'
 

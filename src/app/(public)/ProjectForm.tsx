@@ -34,9 +34,7 @@ const ProjectForm = () => {
 
   const onSubmit = async (data: ProjectData) => {
     try {
-      const result = await createProject.mutateAsync(data)
-      // TODO display success message and button to reset the page
-      console.log('DONE', result)
+      await createProject.mutateAsync(data)
     } catch (err) {
       // Error message will be in hook result
     }

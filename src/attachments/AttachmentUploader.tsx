@@ -28,8 +28,6 @@ const AttachmentUploader = ({
 
   const onDrop = useCallback(
     async (acceptedFiles: File[], fileRejections: FileRejection[]) => {
-      console.log('DROPPED', { acceptedFiles, fileRejections })
-
       setFiles(acceptedFiles.map((file) => ({ file, status: 'pending' })))
 
       const uploadedFiles = await Promise.all(
@@ -62,7 +60,6 @@ const AttachmentUploader = ({
   )
 
   const validator = (file: File): FileError | FileError[] | null => {
-    console.log('VALIDATING', file)
     return null
   }
 

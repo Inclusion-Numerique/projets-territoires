@@ -50,7 +50,6 @@ export function RadioFormField<T extends FieldValues>({
                     disabled={disabled}
                     onBlur={onBlur}
                     onChange={(e) => {
-                      console.log('ON CHANGE RADIO', e)
                       if (e.target.checked) {
                         onChange(option.value)
                       }

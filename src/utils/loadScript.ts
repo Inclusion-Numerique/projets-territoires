@@ -14,6 +14,7 @@ export function loadScript(
   return new Promise((resolve) => {
     const script = document.createElement('script')
     script.type = 'text/javascript'
+    script.async = true
     if (nomodule) {
       script.setAttribute('nomodule', '')
     }
