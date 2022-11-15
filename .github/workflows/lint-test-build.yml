@@ -1,17 +1,77 @@
-# .github/workflows/postgres.yml
-on: push
+name: Lint, test and build
 
-env:
-  NODE_VERSION: 19
+on:
+  - push
 
 jobs:
-  # label of the container job
-  e2e:
-    # containers must run in Linux based operating systems
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-    # Docker Hub image that `postgres-job` executes in
     container: node:latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
 
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+  tsc:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    container: node:latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run tsc
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container: node:latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run test
+        run: npm run test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container: node:latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-build
+          path: |
+            .next
+
+  e2e:
+    name: E2e
+    runs-on: ubuntu-latest
+    container: node:latest
+    needs: [lint, tsc, build] # TODO depend on Test also
     # service containers to run with `postgres-job`
     services:
       # label used to access the service container
@@ -40,19 +100,15 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Install NodeJS
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ env.NODE_VERSION }}
 
       - name: Code Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
 
       - name: Install PostgreSQL client
         run: |
