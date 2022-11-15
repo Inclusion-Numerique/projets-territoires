@@ -3,6 +3,15 @@ name: Lint, test and build
 on:
   - push
 
+env:
+  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+  NEXT_PUBLIC_CONTACT_EMAIL: ${{ secrets.NEXT_PUBLIC_CONTACT_EMAIL }}
+  SCALEWAY_ACCESS_KEY: ${{ secrets.SCALEWAY_ACCESS_KEY }}
+  SCALEWAY_BUCKET_ID: ${{ secrets.SCALEWAY_BUCKET_ID }}
+  SCALEWAY_S3_BUCKET_LOCATION: ${{ secrets.SCALEWAY_S3_BUCKET_LOCATION }}
+  SCALEWAY_S3_HOST: ${{ secrets.SCALEWAY_S3_HOST }}
+  SCALEWAY_SECRET_KEY: ${{ secrets.SCALEWAY_SECRET_KEY }}
+
 jobs:
   lint:
     name: Lint
