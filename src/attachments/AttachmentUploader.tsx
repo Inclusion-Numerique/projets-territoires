@@ -1,6 +1,6 @@
 'use client'
 import { FileError, FileRejection, useDropzone } from 'react-dropzone'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { Spinner } from '@pt/ui/Spinner'
 import { EcgUploadApiSuccessResponse } from '@pt/pages/api/file/upload'
@@ -18,46 +18,56 @@ const UploadedFileRow = styled.li`
 `
 
 const AttachmentUploader = ({
-  onUploaded,
+  onChange,
   reference,
 }: {
   reference: string
-  onUploaded: (files: UploadingFileInfo[]) => void
+  onChange: (files: UploadingFileInfo[]) => void
 }) => {
   const [files, setFiles] = useState<UploadingFileInfo[]>([])
 
-  const onDrop = useCallback(
-    async (acceptedFiles: File[], fileRejections: FileRejection[]) => {
-      setFiles(acceptedFiles.map((file) => ({ file, status: 'pending' })))
+  const onDrop = async (
+    acceptedFiles: File[],
+    fileRejections: FileRejection[],
+  ) => {
+    const addedFiles = acceptedFiles.map(
+      (file): UploadingFileInfo => ({ file, status: 'pending' }),
+    )
 
-      const uploadedFiles = await Promise.all(
-        acceptedFiles.map(async (file): Promise<UploadingFileInfo> => {
-          // TODO Set file as uploading
-          const urlResult = await axios.post<EcgUploadApiSuccessResponse>(
-            '/api/file/upload',
-            {
-              name: file.name,
-              type: file.type,
-              directory: reference,
-            },
-          )
+    setFiles([...files, ...addedFiles])
 
-          await axios.put(urlResult.data.url, file, {
-            headers: {
-              'Content-Type': file.type,
-              'Access-Control-Allow-Origin': '*',
-            },
-          })
+    const uploadedFiles = await Promise.all(
+      acceptedFiles.map(async (file): Promise<UploadingFileInfo> => {
+        const urlResult = await axios.post<EcgUploadApiSuccessResponse>(
+          '/api/file/upload',
+          {
+            name: file.name,
+            type: file.type,
+            directory: reference,
+          },
+        )
 
-          return { key: urlResult.data.key, status: 'uploaded', file }
-        }),
-      )
+        await axios.put(urlResult.data.url, file, {
+          headers: {
+            'Content-Type': file.type,
+            'Access-Control-Allow-Origin': '*',
+          },
+        })
 
-      setFiles(uploadedFiles)
-      onUploaded(uploadedFiles)
-    },
-    [onUploaded, setFiles, reference],
-  )
+        return { key: urlResult.data.key, status: 'uploaded', file }
+      }),
+    )
+
+    setFiles([...files, ...uploadedFiles])
+    onChange([...files, ...uploadedFiles])
+  }
+
+  const onRemove = (index: number) => {
+    const updatedFiles = [...files]
+    updatedFiles.splice(index, 1)
+    setFiles(updatedFiles)
+    onChange(updatedFiles)
+  }
 
   const validator = (file: File): FileError | FileError[] | null => {
     return null
@@ -108,6 +118,12 @@ const AttachmentUploader = ({
             <span className="fr-ml-4v fr-text--sm fr-m-0">
               {file.file.name}
             </span>
+            <button
+              type="button"
+              className="fr-btn fr-icon-close-line fr-btn--tertiary-no-outline fr-btn--sm fr-ml-4v"
+              aria-label={`Retirer le fichier ${file.file.name}`}
+              onClick={() => onRemove(index)}
+            />
           </UploadedFileRow>
         ))}
       </ul>

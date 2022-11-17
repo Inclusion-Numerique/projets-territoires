@@ -154,7 +154,7 @@ const ProjectForm = () => {
                 }) => (
                   <AttachmentUploader
                     reference={reference}
-                    onUploaded={(files) => {
+                    onChange={(files) => {
                       onChange(
                         files.map(({ file, key }) => ({
                           type: file.type,
