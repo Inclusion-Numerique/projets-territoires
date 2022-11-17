@@ -29,6 +29,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <link
             key={font}
             rel="preload"
+            crossOrigin="anonymous"
             href={`/dsfr/fonts/${font}.woff2`}
             as="font"
             type="font/woff2"
