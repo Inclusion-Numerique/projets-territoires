@@ -2,8 +2,8 @@ import z, { string } from 'zod'
 import { Options } from '@pt/utils/options'
 
 /**
- * Nom et prénom du point de contact
- * Qualité du point de contact
+ * Nom et prénom
+ * Qualité
  * Email
  * Numéro de téléphone
  * Votre idée concerne le domaine suivant : (avec les propositions  déjà présentes)
@@ -30,30 +30,32 @@ export const ProjectDataValidation = z.object({
     },
   ),
   name: z.string({
-    required_error: 'Veuillez renseigner le nom du projet',
+    required_error: 'Veuillez renseigner le nom et prénom',
   }),
   quality: z.string({
-    required_error: 'Veuillez renseigner la qualité du point de contact',
+    required_error: 'Veuillez renseigner la qualité',
   }),
   email: z
     .string({
       required_error: 'Veuillez renseigner un email',
     })
     .email('Veuillez renseigner un email valide'),
-  phone: z.string({
-    required_error: 'Veuillez renseigner un numéro de téléphone',
-  }),
+  phone: z
+    .string({
+      required_error: 'Veuillez renseigner un numéro de téléphone',
+    })
+    .optional(),
   domain: z.string({
     required_error: 'Veuillez renseigner le domaine de votre projet',
   }),
   solution: z
     .string({
-      required_error: 'Veuillez renseigner le nom de votre projet',
+      required_error: 'Veuillez renseigner le nom de la solution',
     })
     .max(100, 'Veuillez entrer 100 caractères maximum'),
   description: z
     .string({
-      required_error: 'Veuillez décrire votre projet',
+      required_error: 'Veuillez décrire votre solution',
     })
     .max(2000, 'Veuillez entrer 2000 caractères maximum'),
   dates: z
@@ -85,12 +87,10 @@ const projectDomains = [
   'Services au public',
   'Transport et mobilités',
   'Transition écologique',
-  'Tiers-lieux',
   'Logement et cadre de vie',
-  'Développement économique et industriel',
-  'Ingénierie sur mesure',
+  'Développement économique',
   'Infrastructures locales',
-  'Inclusion sociale',
+  'Solidarité',
   'Éducation et jeunesse',
   'Attractivité et dynamisme territorial',
 ]

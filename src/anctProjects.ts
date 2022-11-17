@@ -21,10 +21,6 @@ export const projectCategoriesLinks: {
     url: anctProjectCategoryLink(18),
   },
   {
-    title: 'Tiers-lieux',
-    url: anctProjectCategoryLink(31),
-  },
-  {
     title: 'Soutien aux associations',
     url: anctProjectCategoryLink(173),
   },
@@ -33,19 +29,15 @@ export const projectCategoriesLinks: {
     url: anctProjectCategoryLink(22),
   },
   {
-    title: 'Développement économique et industriel',
+    title: 'Développement économique',
     url: anctProjectCategoryLink(41),
-  },
-  {
-    title: 'Ingénierie sur mesure',
-    url: anctProjectCategoryLink(177),
   },
   {
     title: 'Infrastructures locales',
     url: anctProjectCategoryLink(25),
   },
   {
-    title: 'Inclusion sociale',
+    title: 'Solidarité',
     url: anctProjectCategoryLink(50),
   },
   {

@@ -26,7 +26,7 @@ const PrivateHeader = ({ user }: { user: SessionUser }) => {
                   </Link>
                 </div>
                 <div className="fr-header__operator">
-                  <h2>Salon des maires</h2>
+                  <h2>La France des solutions</h2>
                 </div>
                 <div className="fr-header__navbar">
                   <button

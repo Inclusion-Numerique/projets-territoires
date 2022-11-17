@@ -28,7 +28,7 @@ export default function HomePage() {
                   La transition écologique est le défi majeur pour notre pays.
                 </strong>{' '}
                 Les collectivités territoriales sont en première ligne pour y
-                faire face. Le partage des solutions concrètes, des réussites
+                faire face. Le partage de solutions concrètes, des réussites
                 faites ici ou là, est indispensable pour accélération la
                 transition écologique de nos territoires. Ensemble, partageons
                 les solutions. »
@@ -52,8 +52,14 @@ export default function HomePage() {
           <div className="fr-grid-row fr-mt-1v fr-mb-8v fr-grid-row--gutters">
             <div className="fr-col-12 fr-col-md-6">
               <div className="fr-btns-group fr-btns-group--lg">
-                <Link href="/projet" className="fr-btn fr-py-8v">
-                  Je suis maire, je partage mes solutions&nbsp;!
+                <Link
+                  href="/projet"
+                  className="fr-btn fr-py-8v"
+                  style={{ textAlign: 'center' }}
+                >
+                  Je suis maire ou président d&apos;intercommunalité,
+                  <br />
+                  je partage mes solutions&nbsp;!
                 </Link>
               </div>
             </div>
@@ -64,8 +70,10 @@ export default function HomePage() {
                   className="fr-btn fr-btn--secondary fr-py-8v"
                   target="_blank"
                   rel="noreferrer"
+                  style={{ textAlign: 'center' }}
                 >
-                  Je suis maire, je cherche des solutions&nbsp;!
+                  Je suis maire ou président d&apos;intercommunalité, <br />
+                  je cherche des solutions&nbsp;!
                 </Link>
               </div>
             </div>
@@ -158,7 +166,7 @@ export default function HomePage() {
                   <p>
                     Si votre souhait est d’avoir connaissance des offres
                     d’ingénierie ou de financement, le site du Ministère
-                    Aides-territoires{' '}
+                    Aides-territoires (
                     <a
                       href="https://aides-territoires.beta.gouv.fr"
                       target="_blank"
@@ -166,8 +174,8 @@ export default function HomePage() {
                       className="fr-link"
                     >
                       https://aides-territoires.beta.gouv.fr
-                    </a>{' '}
-                    est l’endroit idéal.
+                    </a>
+                    ) est l’endroit idéal.
                   </p>
                 </div>
               </section>

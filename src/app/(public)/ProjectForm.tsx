@@ -57,7 +57,7 @@ const ProjectForm = () => {
           </div>
         ) : (
           <div className="fr-card__content">
-            <h2>Vous êtes maire ?</h2>
+            <h2>Vous êtes maire ou président d&apos;intercommunalité ?</h2>
             <p className="fr-text--lead fr-mb-3w">
               Ce formulaire vous permet de renseigner les projets de votre
               territoire, en quelques clics.
@@ -70,14 +70,14 @@ const ProjectForm = () => {
                 path="community"
               />
               <InputFormField
-                label="Nom et prénom du point de contact"
+                label="Nom et prénom"
                 disabled={fieldsDisabled}
                 control={control}
                 path="name"
                 type="text"
               />
               <InputFormField
-                label="Qualité du point de contact"
+                label="Qualité"
                 disabled={fieldsDisabled}
                 control={control}
                 path="quality"
@@ -92,6 +92,7 @@ const ProjectForm = () => {
               />
               <InputFormField
                 label="Numéro de téléphone"
+                hint="Facultatif"
                 disabled={fieldsDisabled}
                 control={control}
                 path="phone"
@@ -137,7 +138,7 @@ const ProjectForm = () => {
                 type="textarea"
               />
               <InputFormField
-                label="Pouvez-vous décrire les aspects techniques du projet ?"
+                label="Pouvez-vous décrire les modalités et aspects techniques du projet ?"
                 hint="Maximum 100 caractères"
                 disabled={fieldsDisabled}
                 control={control}

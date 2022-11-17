@@ -56,7 +56,7 @@ export const generateProjectsCsvData = async (): Promise<string[][]> => {
         name,
         quality,
         email,
-        phone,
+        phone ?? '',
         domain,
         solution,
         description,

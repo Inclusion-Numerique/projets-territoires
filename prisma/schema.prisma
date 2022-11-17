@@ -70,7 +70,7 @@ model Project {
   name        String
   quality     String
   email       String
-  phone       String
+  phone       String?
   domain      String
   solution    String
   description String
