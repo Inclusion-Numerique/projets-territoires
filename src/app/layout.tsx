@@ -9,7 +9,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="fr" data-fr-theme="light" data-fr-scheme="light">
       <head>
         <meta charSet="utf-8" />
-        <title>Territoires de solutions</title>
+        <title>La France des solutions</title>
         <meta name="theme-color" content="#000091" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           href="/favicon/manifest.webmanifest"
           crossOrigin="use-credentials"
         />
-        <meta name="description" content="Territoires de solutions" />
+        <meta name="description" content="La France des solutions" />
         <link rel="icon" href="/favicon.ico" />
         {fontsToPreload.map((font) => (
           <link

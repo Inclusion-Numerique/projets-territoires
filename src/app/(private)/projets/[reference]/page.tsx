@@ -21,7 +21,7 @@ const ProjectPage = async ({
     <>
       <div className="fr-grid-row fr-pt-8v">
         <div className="fr-col-12">
-          <h2>Territoires de solutions</h2>
+          <h2>La France des solutions</h2>
           <Link
             href="/projets"
             className="fr-link fr-link--icon-left fr-icon-arrow-left-line"

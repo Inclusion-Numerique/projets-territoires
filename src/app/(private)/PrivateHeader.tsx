@@ -15,7 +15,7 @@ const PrivateHeader = ({ user }: { user: SessionUser }) => {
                     href="/"
                     aria-current="page"
                     target="_self"
-                    title="Territoires de solutions"
+                    title="La France des solutions"
                     className="nuxt-link-exact-active nuxt-link-active"
                   >
                     <p className="fr-logo">

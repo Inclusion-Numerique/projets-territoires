@@ -2,7 +2,7 @@ import { prismaClient } from '@pt/prisma'
 import { getUrl } from '@pt/utils/baseUrl'
 
 export const projectsCsvFilename = () =>
-  `Territoires de solutions - ${new Date().toISOString().slice(0, 10)}.csv`
+  `La France des solutions - ${new Date().toISOString().slice(0, 10)}.csv`
 
 const csvHeaders = [
   'Référence',

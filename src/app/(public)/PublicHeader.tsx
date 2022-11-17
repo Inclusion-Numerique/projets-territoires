@@ -14,7 +14,7 @@ const PublicHeader = () => {
                     href="/"
                     aria-current="page"
                     target="_self"
-                    title="Territoires de solutions"
+                    title="La France des solutions"
                     className="nuxt-link-exact-active nuxt-link-active"
                   >
                     <p className="fr-logo">
@@ -31,7 +31,7 @@ const PublicHeader = () => {
                   </Link>
                 </div>
                 <div className="fr-header__operator">
-                  <h2>Territoires de solutions</h2>
+                  <h2>La France des solutions</h2>
                 </div>
                 <div className="fr-header__navbar">
                   <button
