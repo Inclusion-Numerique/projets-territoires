@@ -17,21 +17,24 @@ export const legacyProjectImageUrl = (imagePath: string): string =>
   `${projethotequeUrl}${imagePath}`
 
 export const districts = [
-  'Île-de-France',
-  'Hauts-de-France',
-  'La Réunion',
-  'Bretagne',
   'Auvergne-Rhône-Alpes',
-  'Grand Est',
-  "Provence-Alpes-Côte d'Azur",
   'Bourgogne-Franche-Comté',
-  'Martinique',
+  'Bretagne',
+  'Centre-Val de Loire',
+  'Corse',
+  'Grand Est',
   'Guadeloupe',
+  'Guyane Française',
+  'Hauts-de-France',
+  'Île-de-France',
+  'Martinique',
+  'Mayotte',
   'Normandie',
   'Nouvelle-Aquitaine',
   'Occitanie',
   'Pays de la Loire',
-  'Centre-Val de Loire',
+  "Provence-Alpes-Côte d'Azur",
+  'La Réunion',
 ]
 
 const legacyCategories = [
