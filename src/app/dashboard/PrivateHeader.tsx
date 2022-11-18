@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { UserMenu } from '@pt/app/(private)/UserMenu'
+import { UserMenu } from '@pt/app/dashboard/UserMenu'
 import { SessionUser } from '@pt/auth/sessionUser'
 
 const PrivateHeader = ({ user }: { user: SessionUser }) => {

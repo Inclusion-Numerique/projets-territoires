@@ -4,9 +4,10 @@ const anctProjectCategoryLink = (id: number): string =>
 export const allProjectsLink =
   'https://agence-cohesion-territoires.gouv.fr/la-projetotheque-15'
 
-export const projectCategoriesLinks: {
+export const categories: {
   title: string
   url: string
+  legacyTitle?: string
 }[] = [
   {
     title: 'Accès au numérique',

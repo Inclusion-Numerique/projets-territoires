@@ -2,6 +2,7 @@ import { getUrl } from '@pt/utils/baseUrl'
 import { getSessionUser } from '@pt/auth/getSessionUser'
 import { redirect } from 'next/navigation'
 import { PublicConfig } from '@pt/config'
+import { dashboardRootPath } from '@pt/dashboard/dashboard'
 
 const VerifyPage = async ({
   searchParams: { callbackUrl, error } = {},
@@ -10,7 +11,7 @@ const VerifyPage = async ({
 }) => {
   const user = await getSessionUser()
   if (user) {
-    redirect(getUrl('/projets'))
+    redirect(getUrl(dashboardRootPath))
     return
   }
 

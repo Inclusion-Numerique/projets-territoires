@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
-import { allProjectsLink, projectCategoriesLinks } from '@pt/anctProjects'
+import { allProjectsLink, categories } from '@pt/anctProjects'
 
 export default function HomePage() {
   return (
@@ -86,7 +86,7 @@ export default function HomePage() {
             <div className="fr-col-12">
               <h2>Découvrez des solutions partout en France</h2>
             </div>
-            {projectCategoriesLinks.map(({ url, title }) => (
+            {categories.map(({ url, title }) => (
               <div key={title} className="fr-col-12 fr-col-md-6 fr-col-lg-4">
                 <div className="fr-tile fr-tile--horizontal fr-enlarge-link">
                   <div className="fr-tile__body fr-m-4v">

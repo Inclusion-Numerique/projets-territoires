@@ -100,3 +100,16 @@ model Attachment {
   projectId String   @db.Uuid
   project   Project  @relation(fields: [projectId], references: [id])
 }
+
+model LegacyProject {
+  id              String  @id
+  pageIndex       Int
+  itemIndexInPage Int
+  imagePath       String
+  slug            String
+  imageAlt        String
+  district        String?
+  city            String?
+  title           String
+  category        String?
+}

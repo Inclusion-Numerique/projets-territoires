@@ -1,6 +1,7 @@
 import { prismaClient } from '@pt/prisma'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { dashboardRootPath } from '@pt/dashboard/dashboard'
 
 const ProjectPage = async ({
   params: { reference },
@@ -23,7 +24,7 @@ const ProjectPage = async ({
         <div className="fr-col-12">
           <h2>La France des solutions</h2>
           <Link
-            href="/projets"
+            href={dashboardRootPath}
             className="fr-link fr-link--icon-left fr-icon-arrow-left-line"
           >
             Retour aux projets

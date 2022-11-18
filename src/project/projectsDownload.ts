@@ -1,5 +1,6 @@
 import { prismaClient } from '@pt/prisma'
 import { getUrl } from '@pt/utils/baseUrl'
+import { dashboardRootPath } from '@pt/dashboard/dashboard'
 
 export const projectsCsvFilename = () =>
   `La France des solutions - ${new Date().toISOString().slice(0, 10)}.csv`
@@ -64,7 +65,7 @@ export const generateProjectsCsvData = async (): Promise<string[][]> => {
         partners,
         tech,
         attachments.length.toString(),
-        `${getUrl(`/projets/${reference}`)}`,
+        `${getUrl(`${dashboardRootPath}/${reference}`)}`,
       ],
     ),
   ]

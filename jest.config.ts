@@ -57,7 +57,7 @@ const config = {
       },
     },
   },
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'node',
   transform: {
     '^.+\\.(js|jsx|ts|tsx|mjs)$': [
       '<rootDir>/node_modules/next/dist/build/swc/jest-transformer.js',

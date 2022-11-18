@@ -3,6 +3,7 @@ import { EmailSigninForm } from '@pt/app/(public)/auth/EmailSigninForm'
 import { getSessionUser } from '@pt/auth/getSessionUser'
 import { redirect } from 'next/navigation'
 import { PublicConfig } from '@pt/config'
+import { dashboardRootPath } from '@pt/dashboard/dashboard'
 
 const signinErrorMessage = (error?: string): string | undefined => {
   if (!error) {
@@ -22,7 +23,7 @@ const SigninPage = async ({
 }) => {
   const user = await getSessionUser()
   if (user) {
-    redirect(getUrl('/projets'))
+    redirect(getUrl(dashboardRootPath))
     return
   }
 
