@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ChangeEventHandler } from 'react'
+import { ChangeEventHandler, MouseEventHandler } from 'react'
 import { districts } from '@pt/projethoteque/legacyProjects'
 import { categories } from '@pt/anctProjects'
 
@@ -80,16 +80,38 @@ export const ProjectsFilters = () => {
     )
   }
 
+  const onClickClearDistrictFilters: MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
+    router.replace(
+      createFilteredProjectsUrl(activeCategoriesFilters, new Set()),
+    )
+  }
+
+  const onClickClearCategoryFilters: MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
+    router.replace(createFilteredProjectsUrl(new Set(), activeDistrictsFilters))
+  }
+
   return (
     <div>
       <div className="fr-form-group">
         <fieldset className="fr-fieldset">
+          <button
+            className="fr-btns-group--inline"
+            onClick={onClickClearDistrictFilters}
+          >
+            Effacer les filtres
+          </button>
+
           <legend
             className="fr-fieldset__legend fr-text--regular"
             id="checkboxes-legend"
           >
             Régions
           </legend>
+
           <div className="fr-fieldset__content">
             {districts.map((district) => (
               <div key={district} className="fr-checkbox-group">
@@ -110,6 +132,12 @@ export const ProjectsFilters = () => {
           </div>
         </fieldset>
         <fieldset className="fr-fieldset">
+          <button
+            className="fr-btns-group--inline"
+            onClick={onClickClearCategoryFilters}
+          >
+            Effacer les filtres
+          </button>
           <legend
             className="fr-fieldset__legend fr-text--regular"
             id="checkboxes-legend"
