@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import { allProjectsLink } from '@pt/anctProjects'
 import { usePathname } from 'next/navigation'
 
 export const PublicHeaderNav = () => {
@@ -25,7 +24,7 @@ export const PublicHeaderNav = () => {
           href="/projet"
           prefetch
         >
-          Participer
+          Partager
         </Link>
       </li>
       <li className="fr-nav__item">
