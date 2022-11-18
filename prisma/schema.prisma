@@ -111,5 +111,6 @@ model LegacyProject {
   district        String?
   city            String?
   title           String
-  category        String?
+  program        String?
+  categories     String[]
 }

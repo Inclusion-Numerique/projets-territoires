@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { HTMLElement, parse } from 'node-html-parser'
-import { projethotequeListUrl } from '@pt/projethoteque/projethoteque'
+import {
+  projethotequeListUrl,
+  projethotequeUrl,
+} from '@pt/projethoteque/projethoteque'
 
 export const listProjects = async () => {
   const html = await axios.get(projethotequeListUrl).then(({ data }) => data)
@@ -23,7 +26,9 @@ export const listProjects = async () => {
     ...(await getProjectListPageDocument(1, lastPageNumber)),
   ]
 
-  const projectItems = pagesDocuments.map(parseProjectItems).flat()
+  const projectItems = (
+    await Promise.all(pagesDocuments.map(parseProjectItems))
+  ).flat()
 
   const districts = [
     ...new Set(projectItems.map(({ district }) => district)).values(),
@@ -51,13 +56,15 @@ const getProjectListPageDocument = (
 }
 
 const parseProjectItems = (projectPage: HTMLElement, pageIndex: number) => {
-  return projectPage
-    .querySelectorAll('.entity-list-item.project-item')
-    .map((projectItem, itemIndex) =>
-      parseProjectItem(projectItem, pageIndex, itemIndex),
-    )
+  return Promise.all(
+    projectPage
+      .querySelectorAll('.entity-list-item.project-item')
+      .map((projectItem, itemIndex) =>
+        scrapProjectItem(projectItem, pageIndex, itemIndex),
+      ),
+  )
 }
-const parseProjectItem = (
+const scrapProjectItem = async (
   projectElement: HTMLElement,
   pageIndex: number,
   itemIndexInPage: number,
@@ -71,7 +78,7 @@ const parseProjectItem = (
     projectElement.querySelector('.card-district')?.text.trim() || null
   const city = projectElement.querySelector('.card-city')?.text.trim() || null
   const title = projectElement.querySelector('.card-title')?.text.trim()
-  const category =
+  const program =
     projectElement.querySelector('.card-category')?.text.trim() || null
   const link = projectElement.querySelector('.card-title')?.getAttribute('href')
 
@@ -84,7 +91,7 @@ const parseProjectItem = (
       district,
       city,
       title,
-      category,
+      program,
       link,
       pageIndex,
       itemIndexInPage,
@@ -95,6 +102,16 @@ const parseProjectItem = (
   }
 
   const slug = link.replace('/', '')
+  const projectUrl = `${projethotequeUrl}${link}`
+  const projectPageHtml = await axios.get(projectUrl).then(({ data }) => data)
+
+  if (!projectPageHtml) {
+    throw new Error(
+      `Could not fetch project html page for page ${pageIndex} item ${itemIndexInPage} at ${projectUrl}`,
+    )
+  }
+
+  const { categories } = parseProjectPage(parse(projectPageHtml))
 
   return {
     id: `${pageIndex}-${itemIndexInPage}`,
@@ -106,6 +123,17 @@ const parseProjectItem = (
     district,
     city,
     title,
-    category,
+    program,
+    categories,
   }
+}
+
+const parseProjectPage = (projectPage: HTMLElement) => {
+  const liElements = projectPage.querySelectorAll(
+    '.info-intro.hashtag .content ul li a',
+  )
+
+  const categories = liElements.map((element) => element.text.trim())
+
+  return { categories }
 }

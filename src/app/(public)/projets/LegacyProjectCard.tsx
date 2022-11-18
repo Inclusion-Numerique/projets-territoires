@@ -3,10 +3,13 @@ import {
   legacyProjectImageUrl,
   legacyProjectUrl,
 } from '@pt/projethoteque/legacyProjects'
+import styles from './styles.module.scss'
+import Link from 'next/link'
 
 export const LegacyProjectCard = ({
   project: {
-    category,
+    program,
+    categories,
     district,
     id,
     title,
@@ -21,20 +24,44 @@ export const LegacyProjectCard = ({
   project: LegacyProject
 }) => {
   return (
-    <div className="fr-grid-row fr-grid-row--gutters fr-mb-6v">
-      <div className="fr-col-4">
+    <li className="">
+      <Link
+        href={legacyProjectUrl(slug)}
+        target="_blank"
+        rel="noreferrer"
+        className={`fr-p-4v fr-mb-8v ${styles.legacyProjectCard}`}
+      >
         <picture>
           <img
-            className="fr-responsive-img"
+            id={`${id}__image`}
             src={legacyProjectImageUrl(imagePath)}
             alt={imageAlt}
           />
         </picture>
-      </div>
-      <div className="fr-col-8">
-        <h5>{title}</h5>
-        <pre>{legacyProjectUrl(slug)}</pre>
-      </div>
-    </div>
+        <div className="fr-col-8 fr-pl-4v">
+          <h6 className="fr-mb-2v fr-text--lg">{title}</h6>
+          <div>
+            {district ? (
+              <p className="fr-badge fr-badge--sm fr-badge--green-emeraude fr-mr-1v">
+                {district}
+              </p>
+            ) : null}
+            {program ? (
+              <p className="fr-badge fr-badge--sm">{program}</p>
+            ) : null}
+          </div>
+          <div>
+            {categories.map((category) => (
+              <p
+                key={category}
+                className="fr-badge fr-badge--blue-cumulus fr-badge--sm fr-mr-1v"
+              >
+                {category}
+              </p>
+            ))}
+          </div>
+        </div>
+      </Link>
+    </li>
   )
 }

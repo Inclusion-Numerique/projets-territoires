@@ -12,7 +12,6 @@ export const PublicHeaderNav = () => {
           className="fr-nav__link"
           aria-current={pathname === '/' ? 'page' : undefined}
           href="/"
-          prefetch
         >
           Accueil
         </Link>
@@ -22,13 +21,16 @@ export const PublicHeaderNav = () => {
           className="fr-nav__link"
           aria-current={pathname === '/projet' ? 'page' : undefined}
           href="/projet"
-          prefetch
         >
           Partager
         </Link>
       </li>
       <li className="fr-nav__item">
-        <Link className="fr-nav__link" href="/projets" prefetch>
+        <Link
+          className="fr-nav__link"
+          aria-current={pathname === '/projets' ? 'page' : undefined}
+          href="/projets"
+        >
           Voir les projets
         </Link>
       </li>

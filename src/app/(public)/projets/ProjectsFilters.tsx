@@ -34,15 +34,8 @@ export const ProjectsFilters = () => {
   const params = useSearchParams()
   const router = useRouter()
 
-  console.log([...params.entries()])
-
   const activeCategoriesFilters = new Set(params.getAll('thematiques'))
   const activeDistrictsFilters = new Set(params.getAll('regions'))
-
-  console.log('SIDEBAR PARAMS', {
-    activeCategoriesFilters,
-    activeDistrictsFilters,
-  })
 
   const onCheckDistrict: ChangeEventHandler<HTMLInputElement> = ({
     target,
@@ -95,7 +88,7 @@ export const ProjectsFilters = () => {
   }
 
   return (
-    <div>
+    <div className="fr-p-8v">
       <div className="fr-form-group">
         <fieldset className="fr-fieldset">
           <button
@@ -114,15 +107,19 @@ export const ProjectsFilters = () => {
 
           <div className="fr-fieldset__content">
             {districts.map((district) => (
-              <div key={district} className="fr-checkbox-group">
+              <div
+                key={district}
+                className="fr-checkbox-group fr-checkbox-group--sm"
+              >
                 <input
                   onChange={onCheckDistrict}
                   type="checkbox"
                   id={`district_${district}`}
                   name={district}
+                  checked={activeDistrictsFilters.has(district)}
                 />
                 <label
-                  className="fr-label fr-pt-3v fr-pb-1v"
+                  className="fr-label fr-pt-3v fr-pb-0 fr-text--sm"
                   htmlFor={`district_${district}`}
                 >
                   {district}
@@ -146,15 +143,19 @@ export const ProjectsFilters = () => {
           </legend>
           <div className="fr-fieldset__content">
             {categories.map(({ title }) => (
-              <div key={title} className="fr-checkbox-group">
+              <div
+                key={title}
+                className="fr-checkbox-group fr-checkbox-group--sm"
+              >
                 <input
                   onChange={onCheckCategory}
                   type="checkbox"
                   id={`category_${title}`}
                   name={title}
+                  checked={activeCategoriesFilters.has(title)}
                 />
                 <label
-                  className="fr-label fr-pt-3v fr-pb-1v"
+                  className="fr-label fr-pt-3v fr-pb-0 fr-text--sm"
                   htmlFor={`category_${title}`}
                 >
                   {title}
