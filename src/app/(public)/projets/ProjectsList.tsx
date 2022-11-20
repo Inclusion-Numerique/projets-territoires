@@ -13,7 +13,7 @@ import { withTrpc } from '@pt/withTrpc'
 const ProjectsList = ({
   initialProjects,
 }: {
-  initialProjects: LegacyProject[]
+  initialProjects: LegacyProject[] | null
 }) => {
   const selectedDistricts = useDistrictFilters(({ selected }) => selected)
   const selectedCategories = useCategoriesFilters(({ selected }) => selected)
@@ -23,7 +23,10 @@ const ProjectsList = ({
       districts: [...selectedDistricts],
       categories: [...selectedCategories],
     },
-    { initialData: { projects: initialProjects }, keepPreviousData: true },
+    {
+      initialData: initialProjects ? { projects: initialProjects } : undefined,
+      keepPreviousData: true,
+    },
   )
 
   return (

@@ -2,7 +2,6 @@ import { District } from '@pt/projethoteque/legacyProjects'
 import { ProjectsFilters } from '@pt/app/(public)/projets/ProjectsFilters'
 import { ProjectsCategories } from '@pt/app/(public)/projets/ProjectsCategories'
 import ProjectsList from '@pt/app/(public)/projets/ProjectsList'
-import { findLegacyProjects } from '@pt/projethoteque/findLegacyProjects'
 import { searchParamAsArray } from '@pt/utils/searchParams'
 import { Category } from '@pt/anctProjects'
 
@@ -20,10 +19,10 @@ const ProjectsPage = async ({
   const activeDistrictsFilters = searchParamAsArray<District>(
     searchParams?.regions,
   )
-  const projects = await findLegacyProjects({
-    activeCategoriesFilters,
-    activeDistrictsFilters,
-  })
+  // const projects = await findLegacyProjects({
+  //   activeCategoriesFilters,
+  //   activeDistrictsFilters,
+  // })
   return (
     <div
       className="fr-container fr-background-default--grey fr-p-0"
@@ -49,7 +48,7 @@ const ProjectsPage = async ({
         </div>
         <div className="fr-col-12 fr-col-md-8">
           <ProjectsCategories />
-          <ProjectsList initialProjects={projects} />
+          <ProjectsList initialProjects={null} />
         </div>
       </div>
     </div>
