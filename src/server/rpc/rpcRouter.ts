@@ -78,14 +78,17 @@ export const appRouter = t.router({
       z.object({
         districts: z.array(z.string()),
         categories: z.array(z.string()),
+        limit: z.number().min(1).max(20).optional(),
+        cursor: z.string().optional(),
       }),
     )
-    .query(async ({ input: { districts, categories } }) => {
-      const projects = await findLegacyProjects({
+    .query(async ({ input: { districts, categories, cursor, limit = 20 } }) => {
+      return findLegacyProjects({
         activeCategoriesFilters: categories as Category[],
         activeDistrictsFilters: districts as District[],
+        limit,
+        cursor,
       })
-      return { projects }
     }),
 })
 // export type definition of API

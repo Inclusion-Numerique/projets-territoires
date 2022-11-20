@@ -44,12 +44,6 @@ const isRouterStateDifferentFromFiltersState = (
   const filters = [...filtersState].sort()
   const searchParams = routerState.sort()
 
-  console.log('EQUAL ? ', {
-    filters,
-    searchParams,
-    equel: isEqual(filters, searchParams),
-  })
-
   return !isEqual(filters, searchParams)
 }
 

@@ -47,7 +47,9 @@ const ProjectsPage = ({
         </div>
         <div className="fr-col-12 fr-col-md-8">
           <ProjectsCategories />
-          <ProjectsList initialProjects={null} />
+          <div className="fr-px-8v fr-pb-8v">
+            <ProjectsList initialProjects={null} />
+          </div>
         </div>
       </div>
     </div>

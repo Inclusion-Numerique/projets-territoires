@@ -25,7 +25,7 @@ export const LegacyProjectCard = forwardRef(
         slug,
       },
     }: {
-      style: CSSProperties
+      style?: CSSProperties
       project: LegacyProject
     },
     ref: ForwardedRef<HTMLLIElement>,
