@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
-import { allProjectsLink, categories } from '@pt/anctProjects'
+import { categories, categoryProjectsLink } from '@pt/anctProjects'
 
 export default function HomePage() {
   return (
@@ -66,10 +66,8 @@ export default function HomePage() {
             <div className="fr-col-12 fr-col-md-6">
               <div className="fr-btns-group fr-btns-group--lg">
                 <Link
-                  href={allProjectsLink}
+                  href="/projets"
                   className="fr-btn fr-btn--secondary fr-py-8v"
-                  target="_blank"
-                  rel="noreferrer"
                   style={{ textAlign: 'center' }}
                 >
                   Je suis maire ou président d&apos;intercommunalité, <br />
@@ -86,14 +84,14 @@ export default function HomePage() {
             <div className="fr-col-12">
               <h2>Découvrez des solutions partout en France</h2>
             </div>
-            {categories.map(({ url, title }) => (
-              <div key={title} className="fr-col-12 fr-col-md-6 fr-col-lg-4">
+            {categories.map((category) => (
+              <div key={category} className="fr-col-12 fr-col-md-6 fr-col-lg-4">
                 <div className="fr-tile fr-tile--horizontal fr-enlarge-link">
                   <div className="fr-tile__body fr-m-4v">
                     <h4 className="fr-tile__title fr-mb-0">
-                      <a href={url} target="_blank" rel="noreferrer">
-                        {title}
-                      </a>
+                      <Link href={categoryProjectsLink(category)}>
+                        {category}
+                      </Link>
                     </h4>
                   </div>
                 </div>

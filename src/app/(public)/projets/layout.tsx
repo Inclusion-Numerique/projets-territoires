@@ -1,5 +1,4 @@
 import { PropsWithChildren } from 'react'
-import { ProjectsFilters } from '@pt/app/(public)/projets/ProjectsFilters'
 import styles from '@pt/app/(public)/styles.module.scss'
 
 const ProjectsLayout = ({ children }: PropsWithChildren) => {
@@ -16,27 +15,7 @@ const ProjectsLayout = ({ children }: PropsWithChildren) => {
           </div>
         </div>
       </div>
-      <div
-        className="fr-container fr-background-default--grey fr-p-0"
-        style={{
-          marginTop: '-30vh',
-          boxShadow: '0 0 0 1px var(--border-default-grey)',
-        }}
-      >
-        <div className="fr-grid-row fr-p-0">
-          <div className="fr-col-12 fr-col-md-4 fr-p-0 fr-background-alt--grey">
-            <aside
-              className="fr-sidemenu fr-sidemenu--sticky fr-p-0"
-              aria-label="Menu latéral"
-            >
-              <div className="fr-sidemenu__inner">
-                <ProjectsFilters />
-              </div>
-            </aside>
-          </div>
-          <div className="fr-col-12 fr-col-md-8">{children}</div>
-        </div>
-      </div>
+      {children}
     </>
   )
 }

@@ -4,6 +4,10 @@ import { SessionUser } from '@pt/auth/sessionUser'
 import { ProjectDataValidation } from '@pt/project/project'
 import { prismaClient } from '@pt/prisma'
 import { v4 } from 'uuid'
+import z from 'zod'
+import { District } from '@pt/projethoteque/legacyProjects'
+import { findLegacyProjects } from '@pt/projethoteque/findLegacyProjects'
+import { Category } from '@pt/anctProjects'
 
 const t = initTRPC.context<RpcContext>().create()
 
@@ -69,6 +73,20 @@ export const appRouter = t.router({
         return { project }
       },
     ),
+  findLegacyProject: t.procedure
+    .input(
+      z.object({
+        districts: z.array(z.string()),
+        categories: z.array(z.string()),
+      }),
+    )
+    .query(async ({ input: { districts, categories } }) => {
+      const projects = await findLegacyProjects({
+        activeCategoriesFilters: categories as Category[],
+        activeDistrictsFilters: districts as District[],
+      })
+      return { projects }
+    }),
 })
 // export type definition of API
 export type AppRouter = typeof appRouter

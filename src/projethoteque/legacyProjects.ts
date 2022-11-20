@@ -1,12 +1,68 @@
 // TODO MAP THIS WITH OLD NAMES
 import { projethotequeUrl } from '@pt/projethoteque/projethoteque'
+import { Category } from '@pt/anctProjects'
 
 export const categoryToLegacyCategory = (category: string): string => {
   return category
 }
 
-// TODO MAP THIS WITH OLD NAMES
-export const legacyCategoryToCategory = (legacyCategory: string): string => {
+const legacyCategories = [
+  'Accès au numérique',
+  'Attractivité et dynamisme territorial',
+  'CRTE',
+  'Commerces',
+  'Développement économique et industriel',
+  'Éducation et jeunesse',
+  'Inclusion sociale',
+  'Industrie',
+  'Infrastructures locales',
+  'Ingénierie sur mesure',
+  'Logement et cadre de vie',
+  'PVD',
+  'Services au public',
+  'Soutien aux associations',
+  'Tiers-lieux',
+  'Transition écologique',
+  'Transport et mobilités',
+] as const
+
+export type LegacyCategory = typeof legacyCategories[number]
+
+export const legacyCategoryToCategory = (
+  legacyCategory: LegacyCategory,
+): Category => {
+  if (legacyCategory === 'Attractivité et dynamisme territorial') {
+    return 'Attractivité'
+  }
+
+  // contrat de relance et de transition écologique
+  if (legacyCategory === 'CRTE') {
+    return 'Solidarité'
+  }
+  if (
+    legacyCategory === 'Commerces' ||
+    legacyCategory === 'Développement économique et industriel' ||
+    legacyCategory === 'Industrie'
+  ) {
+    return 'Développement économique'
+  }
+  if (legacyCategory == 'Inclusion sociale') {
+    return 'Solidarité'
+  }
+  if (legacyCategory == 'Ingénierie sur mesure') {
+    return 'Infrastructures locales'
+  }
+  // Petites villes de demain
+  if (legacyCategory === 'PVD') {
+    return 'Attractivité'
+  }
+  if (legacyCategory === 'Tiers-lieux') {
+    return 'Solidarité'
+  }
+  if (legacyCategory === 'Transition écologique') {
+    return 'Solidarité'
+  }
+
   return legacyCategory
 }
 
@@ -35,35 +91,6 @@ export const districts = [
   'Pays de la Loire',
   "Provence-Alpes-Côte d'Azur",
   'La Réunion',
-]
+] as const
 
-const legacyCategories = [
-  'France services',
-  'Quartiers d’été',
-  "Territoires d'industrie",
-  'Pacte Ardennes',
-  'Redynamisation commerciale',
-  'Montagne',
-  'Association des petites villes de France',
-  'Cités éducatives',
-  'Redynamisation de commerces',
-  'Petites villes de demain',
-  'Conseiller numérique France Services',
-  'Politique de la ville',
-  'Action coeur de ville',
-  'Action cœur de ville',
-  'Les Cordées de la réussite',
-  'Ingénierie sur mesure',
-  'Tremplin Asso',
-  '"Nouveaux lieux, nouveaux liens"',
-  'France Services',
-  'Société numérique',
-  'Action cœur de ville (42)',
-  'Commissariat du massif central',
-  'Avenir montagne',
-  'France Mobile',
-  'Petites Villes de demain',
-  '1000 doctorants pour les territoires',
-  '"Nouveaux lieux, Nouveaux liens"',
-  'Action cœur de ville / Terre de jeux 2024',
-]
+export type District = typeof districts[number]

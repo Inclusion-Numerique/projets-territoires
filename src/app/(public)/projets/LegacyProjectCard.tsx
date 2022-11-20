@@ -42,7 +42,7 @@ export const LegacyProjectCard = ({
           <h6 className="fr-mb-2v fr-text--lg">{title}</h6>
           <div>
             {district ? (
-              <p className="fr-badge fr-badge--sm fr-badge--green-emeraude fr-mr-1v">
+              <p className="fr-badge fr-badge--sm fr-badge--blue-cumulus fr-mr-2v">
                 {district}
               </p>
             ) : null}
@@ -50,11 +50,11 @@ export const LegacyProjectCard = ({
               <p className="fr-badge fr-badge--sm">{program}</p>
             ) : null}
           </div>
-          <div>
+          <div className="fr-mt-1v">
             {categories.map((category) => (
               <p
                 key={category}
-                className="fr-badge fr-badge--blue-cumulus fr-badge--sm fr-mr-1v"
+                className="fr-badge fr-badge--green-emeraude fr-badge--sm fr-mr-2v"
               >
                 {category}
               </p>

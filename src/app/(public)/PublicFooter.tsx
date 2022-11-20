@@ -6,27 +6,29 @@ const PublicFooter = () => {
     <footer id="footer" role="contentinfo" className="fr-footer">
       <div className="fr-container">
         <div className="fr-footer__body fr-footer__body--operator">
-          <div className="fr-footer__brand fr-enlarge-link">
-            <a
-              href="https://www.ecologie.gouv.fr/"
-              title="Site Web du Ministère de la Transition écologique et de la Cohésion des territoires"
-              className="fr-footer__brand-link"
-            >
-              <p className="fr-logo fr-logo--sm">
-                Ministère
-                <br />
-                de la transition
-                <br />
-                écologique
-                <br />
-                et de la cohésion
-                <br />
-                des territoires
-              </p>
-            </a>
+          <div className="fr-p-4v">
+            <div className="fr-footer__brand fr-enlarge-link fr-p-4v">
+              <a
+                href="https://www.ecologie.gouv.fr/"
+                title="Site Web du Ministère de la Transition écologique et de la Cohésion des territoires"
+                className="fr-footer__brand-link"
+              >
+                <p className="fr-logo fr-logo--sm">
+                  Ministère
+                  <br />
+                  de la transition
+                  <br />
+                  écologique
+                  <br />
+                  et de la cohésion
+                  <br />
+                  des territoires
+                </p>
+              </a>
+            </div>
           </div>
-          <div className="fr-ml-4v">
-            <div className="fr-footer__brand fr-enlarge-link">
+          <div className="fr-p-4v">
+            <div className="fr-footer__brand fr-enlarge-link fr-p-4v">
               <a
                 href="https://agence-cohesion-territoires.gouv.fr/"
                 title="Site Web de l'Agence Nationale de la Cohésion des Territoires"

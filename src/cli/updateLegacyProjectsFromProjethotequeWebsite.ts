@@ -5,6 +5,11 @@ const updateLegacyProjectsFromProjethotequeWebsite = async () => {
   console.log('👓 Fetching projects from anct website')
   const projectsList = await listProjects()
   console.log(`📁 Found ${projectsList.projectItems.length} projects`)
+  if (projectsList.projectItems.length < 90) {
+    throw new Error(
+      'Seems like there is not enough projects found. Aborting to prevent deletion.',
+    )
+  }
   console.log('💾 Updating database')
   await prismaClient.$transaction([
     prismaClient.legacyProject.deleteMany(),

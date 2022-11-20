@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import { createProjectRecord, uploadAttachments } from '@pt/grist/grist'
 import { createReadStream } from 'fs'
 import { resolve } from 'path'

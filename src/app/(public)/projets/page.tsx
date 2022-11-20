@@ -1,18 +1,10 @@
-import { prismaClient } from '@pt/prisma'
-import { categoryToLegacyCategory } from '@pt/projethoteque/legacyProjects'
-import { LegacyProjectCard } from '@pt/app/(public)/projets/LegacyProjectCard'
-import styles from './styles.module.scss'
-import Link from 'next/link'
-
-const searchParamAsArray = (param?: string | string[]): string[] => {
-  if (!param) {
-    return []
-  }
-  if (typeof param === 'string') {
-    return [param]
-  }
-  return param
-}
+import { District } from '@pt/projethoteque/legacyProjects'
+import { ProjectsFilters } from '@pt/app/(public)/projets/ProjectsFilters'
+import { ProjectsCategories } from '@pt/app/(public)/projets/ProjectsCategories'
+import ProjectsList from '@pt/app/(public)/projets/ProjectsList'
+import { findLegacyProjects } from '@pt/projethoteque/findLegacyProjects'
+import { searchParamAsArray } from '@pt/utils/searchParams'
+import { Category } from '@pt/anctProjects'
 
 const ProjectsPage = async ({
   searchParams,
@@ -22,67 +14,44 @@ const ProjectsPage = async ({
     regions?: string[] | string
   }
 }) => {
-  const activeCategoriesFilters = searchParamAsArray(searchParams?.thematiques)
-  const activeDistrictsFilters = searchParamAsArray(searchParams?.regions)
-
-  console.log('PAGE FILTERS', {
+  const activeCategoriesFilters = searchParamAsArray<Category>(
+    searchParams?.thematiques,
+  )
+  const activeDistrictsFilters = searchParamAsArray<District>(
+    searchParams?.regions,
+  )
+  const projects = await findLegacyProjects({
     activeCategoriesFilters,
     activeDistrictsFilters,
   })
-
-  const projects = await prismaClient.legacyProject.findMany({
-    where: {
-      ...(activeCategoriesFilters.length === 0
-        ? null
-        : {
-            categories: {
-              hasSome: activeCategoriesFilters.map(categoryToLegacyCategory),
-            },
-          }),
-      ...(activeDistrictsFilters.length === 0
-        ? null
-        : {
-            district: {
-              in: activeDistrictsFilters,
-            },
-          }),
-    },
-  })
-
   return (
-    <div className="fr-p-8v">
-      {projects.length === 0 ? (
-        <p>Il n&apos;y a pas encore de projet pour votre selection.</p>
-      ) : null}
-
-      <ul className="fr-raw-list">
-        {projects.map((project) => (
-          <LegacyProjectCard key={project.id} project={project} />
-        ))}
-        <li className="fr-mt-8v">
-          <Link
-            className={`fr-p-4v ${styles.legacyProjectCard}`}
-            href="/projet"
+    <div
+      className="fr-container fr-background-default--grey fr-p-0"
+      style={{
+        marginTop: '-25vh',
+        boxShadow: '0 0 0 1px var(--border-default-grey)',
+      }}
+    >
+      <div className="fr-grid-row fr-p-0">
+        <div className="fr-col-12 fr-col-md-4 fr-p-0 fr-background-alt--grey">
+          <aside
+            className="fr-sidemenu fr-sidemenu--sticky fr-p-0"
             style={{
-              textAlign: 'center',
-              width: '100%',
-              flexDirection: 'column',
-              alignItems: 'center',
+              boxShadow: 'inset -1px 0 0 0 var(--border-default-grey)',
             }}
+            aria-label="Menu latéral"
           >
-            <h6 style={{ width: '100%' }}>
-              Vous êtes maire ou président d&apos;intercommunalité ?
-            </h6>
-            <Link
-              className={`fr-btn`}
-              href="/projet"
-              style={{ textAlign: 'center' }}
-            >
-              Partagez vos solutions&nbsp;!
-            </Link>
-          </Link>
-        </li>
-      </ul>
+            <ProjectsFilters
+              routingCategoriesFilters={activeCategoriesFilters}
+              routingDistrictsFilters={activeDistrictsFilters}
+            />
+          </aside>
+        </div>
+        <div className="fr-col-12 fr-col-md-8">
+          <ProjectsCategories />
+          <ProjectsList initialProjects={projects} />
+        </div>
+      </div>
     </div>
   )
 }

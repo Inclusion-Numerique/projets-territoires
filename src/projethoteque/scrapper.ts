@@ -4,6 +4,10 @@ import {
   projethotequeListUrl,
   projethotequeUrl,
 } from '@pt/projethoteque/projethoteque'
+import {
+  LegacyCategory,
+  legacyCategoryToCategory,
+} from '@pt/projethoteque/legacyProjects'
 
 export const listProjects = async () => {
   const html = await axios.get(projethotequeListUrl).then(({ data }) => data)
@@ -111,7 +115,9 @@ const scrapProjectItem = async (
     )
   }
 
-  const { categories } = parseProjectPage(parse(projectPageHtml))
+  const { legacyCategories, categories } = parseProjectPage(
+    parse(projectPageHtml),
+  )
 
   return {
     id: `${pageIndex}-${itemIndexInPage}`,
@@ -124,6 +130,7 @@ const scrapProjectItem = async (
     city,
     title,
     program,
+    legacyCategories,
     categories,
   }
 }
@@ -133,7 +140,13 @@ const parseProjectPage = (projectPage: HTMLElement) => {
     '.info-intro.hashtag .content ul li a',
   )
 
-  const categories = liElements.map((element) => element.text.trim())
+  const legacyCategories = liElements.map(
+    (element) => element.text.trim() as LegacyCategory,
+  )
 
-  return { categories }
+  const categories = [
+    ...new Set(legacyCategories.map(legacyCategoryToCategory)),
+  ]
+
+  return { legacyCategories, categories }
 }

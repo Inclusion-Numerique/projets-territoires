@@ -1,3 +1,4 @@
+import 'jest'
 import { matchers as joiMatchers } from 'jest-joi'
 import 'jest-extended'
 import 'jest-extended/all'
@@ -7,4 +8,5 @@ import { TextEncoder, TextDecoder } from 'util'
 global.TextEncoder = TextEncoder
 global.TextDecoder = TextDecoder as any
 
-expect.extend(joiMatchers)
+// TODO Cypress has fucked joi types
+;(expect as any).extend(joiMatchers)
