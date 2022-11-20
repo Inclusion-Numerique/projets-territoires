@@ -1,41 +1,38 @@
 import { District } from '@pt/projethoteque/legacyProjects'
 import { useDistrictFilters } from '@pt/app/(public)/projets/projectFiltersStore'
-import { useState } from 'react'
 
 export const ProjectMap = () => {
   const selectedDistricts = useDistrictFilters(({ selected }) => selected)
   const toggleDistrict = useDistrictFilters(({ toggle }) => toggle)
-  const [hovered, setHovered] = useState<District | null>(null)
+  // const [_hovered, setHovered] = useState<District | null>(null)
 
-  const getFill = (district: District) =>
-    selectedDistricts.has(district)
-      ? 'var(--background-contrast-info)'
-      : hovered === district
-      ? 'var(--background-contrast-info)'
-      : selectedDistricts.size === 0
-      ? // If no districts are selected, the whole map is light blue
-        'var(--background-contrast-info)'
-      : '#FFFFFF'
+  const getFill = (district: District) => {
+    if (selectedDistricts.size === 0 || selectedDistricts.has(district)) {
+      return 'var(--text-action-high-blue-france)'
+    }
+
+    return 'var(--background-contrast-info)'
+  }
 
   const getTextFill = (district: District, outside: boolean) => {
     if (outside) {
-      return 'var(--text-label-blue-cumulus)'
+      return 'var(--text-action-high-blue-france)'
     }
 
-    return selectedDistricts.has(district)
-      ? 'var(--text-action-high-blue-france)'
+    return selectedDistricts.has(district) || selectedDistricts.size === 0
+      ? 'white'
       : 'var(--text-action-high-blue-france)'
   }
 
   const regionPathProps = (district: District) => ({
     fill: getFill(district),
     onClick: () => toggleDistrict(district),
-    onMouseEnter: () => {
-      setHovered(district)
-    },
-    onMouseLeave: () => {
-      setHovered(null)
-    },
+    // onMouseEnter: () => {
+    //   setHovered(district)
+    // },
+    // onMouseLeave: () => {
+    //   setHovered(null)
+    // },
   })
 
   const districtTextProps = (district: District, outside = false) => {
@@ -45,12 +42,12 @@ export const ProjectMap = () => {
         fill,
         cursor: 'pointer',
         onClick: () => toggleDistrict(district),
-        onMouseEnter: () => {
-          setHovered(district)
-        },
-        onMouseLeave: () => {
-          setHovered(null)
-        },
+        // onMouseEnter: () => {
+        //   setHovered(district)
+        // },
+        // onMouseLeave: () => {
+        //   setHovered(null)
+        // },
       }
     }
     return {

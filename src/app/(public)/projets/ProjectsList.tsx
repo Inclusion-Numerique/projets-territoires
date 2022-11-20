@@ -114,11 +114,15 @@ const ProjectsList = ({}: {}) => {
           alignItems: 'center',
         }}
       >
-        <p style={{ fontWeight: 400, fontSize: '.875rem', marginBottom: 0 }}>
-          {totalCount === 1
-            ? `1 projet correspond à votre recherche`
-            : `${totalCount} projets correspondent à votre recherche`}
-        </p>
+        {projectsQuery.isFetching ? (
+          <Spinner size="sm" />
+        ) : (
+          <p style={{ fontWeight: 400, fontSize: '.875rem', marginBottom: 0 }}>
+            {totalCount === 1
+              ? `1 projet correspond à votre recherche`
+              : `${totalCount} projets correspondent à votre recherche`}
+          </p>
+        )}
       </div>
       <ul className="fr-raw-list fr-mt-8v">
         {pages?.map((page, i) => (
