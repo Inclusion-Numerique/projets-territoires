@@ -1,5 +1,4 @@
 'use client'
-import { LegacyProjectCard } from '@pt/app/(public)/projets/LegacyProjectCard'
 import Link from 'next/link'
 import styles from '@pt/app/(public)/projets/styles.module.scss'
 import { LegacyProject } from '@prisma/client'
@@ -49,19 +48,11 @@ const ProjectsList = ({
           </h6>
         </div>
       ) : projects?.length ? (
-        <div
-          className={`fr-p-4v ${styles.legacyProjectCard}`}
-          style={{
-            textAlign: 'center',
-            width: '100%',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <h6 style={{ width: '100%' }}>
+        <div className={`fr-p-4v ${styles.legacyProjectCard}`}>
+          <p>
             {projects.length} projet{projects.length > 1 ? 's' : ''}{' '}
             correspondent à votre recherche.
-          </h6>
+          </p>
         </div>
       ) : null}
 

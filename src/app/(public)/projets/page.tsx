@@ -1,3 +1,5 @@
+'use client'
+
 import { District } from '@pt/projethoteque/legacyProjects'
 import { ProjectsFilters } from '@pt/app/(public)/projets/ProjectsFilters'
 import { ProjectsCategories } from '@pt/app/(public)/projets/ProjectsCategories'
@@ -5,7 +7,7 @@ import ProjectsList from '@pt/app/(public)/projets/ProjectsList'
 import { searchParamAsArray } from '@pt/utils/searchParams'
 import { Category } from '@pt/anctProjects'
 
-const ProjectsPage = async ({
+const ProjectsPage = ({
   searchParams,
 }: {
   searchParams?: {

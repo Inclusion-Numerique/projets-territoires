@@ -6,8 +6,8 @@ import { CSSProperties } from 'react'
 
 const selectedStyle: CSSProperties = {}
 const unselectedStyle: CSSProperties = {
-  backgroundColor: 'var(--green-emeraude-975-75)',
-  opacity: 0.7,
+  // Could not find / apply opacity on emeraude bg color
+  backgroundColor: 'rgba(195,250,213, 0.3)',
 }
 
 export const ProjectsCategories = () => {

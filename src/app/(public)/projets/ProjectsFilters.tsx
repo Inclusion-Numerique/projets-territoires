@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { District, districts } from '@pt/projethoteque/legacyProjects'
 import { categories, Category } from '@pt/anctProjects'
 import { ProjectMap } from '@pt/app/(public)/projets/ProjectsMap'
@@ -65,10 +65,9 @@ export const ProjectsFilters = ({
 }) => {
   const router = useRouter()
 
-  console.log('PROJECTS FILTERS PROPS', {
-    routingDistrictsFilters,
-    routingCategoriesFilters,
-  })
+  // There is a bug in prod build where filters do not update if this component do not explicitely useSearchParams()
+  // KEEP THIS
+  useSearchParams()
 
   const districtFilters = useDistrictFilters(
     ({ selected, reset, initialized, initialize, toggle }) => ({

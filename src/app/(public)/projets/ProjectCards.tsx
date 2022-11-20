@@ -1,27 +1,22 @@
 'use client'
 
 import { LegacyProject } from '@prisma/client'
-import { animated, useSprings } from '@react-spring/web'
+import { animated, config, useTrail } from '@react-spring/web'
 import { LegacyProjectCard } from '@pt/app/(public)/projets/LegacyProjectCard'
 
 const AnimatedLegacyProjectCard = animated(LegacyProjectCard)
 
 export const ProjectCards = ({ projects }: { projects: LegacyProject[] }) => {
-  const [trails, api] = useSprings(
+  const [trails] = useTrail(
     projects.length,
     () => ({
-      from: { opacity: 0.5 },
-      to: { opacity: 1 },
+      from: { opacity: 0, translateY: -24, scale: 0.67 },
+      to: { opacity: 1, translateY: 0, scale: 1 },
+      config: config.default,
       reset: true,
     }),
     [projects],
   )
-  console.log('PROJECT CARDS REDERENREDERING')
-  //
-  // useEffect(() => {
-  //   console.log('STARTING API EFFECT')
-  //   api.start()
-  // }, [projects, api])
 
   return (
     <>

@@ -8,9 +8,9 @@ const ProjectsLayout = ({ children }: PropsWithChildren) => {
         <div className="fr-container fr-py-6w">
           <div className="fr-grid-row fr-grid-row--gutters">
             <div className="fr-col-12 fr-col-offset-md-2 fr-col-md-8">
-              <h1 className={`fr-display--sm ${styles.jumboText}`}>
+              <h4 className={`fr-display--xs ${styles.jumboText}`}>
                 Retrouvez ici les projets et réalisations des collectivités.
-              </h1>
+              </h4>
             </div>
           </div>
         </div>
