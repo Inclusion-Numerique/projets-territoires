@@ -32,7 +32,7 @@ const ProjectsList = ({
   const projects = projectsQuery.data?.projects
 
   return (
-    <div className="fr-p-8v">
+    <div className="fr-px-8v fr-pb-8v">
       {projects?.length === 0 ? (
         <div
           className={`fr-p-4v ${styles.legacyProjectCard}`}
@@ -48,40 +48,17 @@ const ProjectsList = ({
           </h6>
         </div>
       ) : projects?.length ? (
-        <div className={`fr-p-4v ${styles.legacyProjectCard}`}>
-          <p>
-            {projects.length} projet{projects.length > 1 ? 's' : ''}{' '}
-            correspondent à votre recherche.
+        <div className="fr-mt-2v">
+          <p style={{ fontWeight: 400, fontSize: '.875rem' }}>
+            {projects.length === 1
+              ? `1 projet correspond à votre recherche`
+              : `${projects.length} projets correspondent à votre recherche`}
           </p>
         </div>
       ) : null}
 
       <ul className="fr-raw-list">
         <ProjectCards projects={projectsQuery.data?.projects ?? []} />
-
-        <li className="fr-mt-8v">
-          <div
-            className={`fr-p-4v`}
-            style={{
-              textAlign: 'center',
-              width: '100%',
-              flexDirection: 'column',
-              alignItems: 'center',
-              boxShadow: '0 0 0 1px var(--border-default-grey)',
-            }}
-          >
-            <h6 style={{ width: '100%' }}>
-              Vous êtes maire ou président d&apos;intercommunalité ?
-            </h6>
-            <Link
-              className={`fr-btn`}
-              href="/projet"
-              style={{ textAlign: 'center' }}
-            >
-              Partagez vos solutions&nbsp;!
-            </Link>
-          </div>
-        </li>
       </ul>
     </div>
   )

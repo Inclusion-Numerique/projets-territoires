@@ -1,4 +1,4 @@
-import { District, districts } from '@pt/projethoteque/legacyProjects'
+import { District } from '@pt/projethoteque/legacyProjects'
 import { useDistrictFilters } from '@pt/app/(public)/projets/projectFiltersStore'
 import { useState } from 'react'
 
@@ -9,12 +9,12 @@ export const ProjectMap = () => {
 
   const getFill = (district: District) =>
     selectedDistricts.has(district)
-      ? 'var(--background-contrast-blue-cumulus)'
+      ? 'var(--background-contrast-info)'
       : hovered === district
-      ? 'var(--background-contrast-blue-cumulus)'
+      ? 'var(--background-contrast-info)'
       : selectedDistricts.size === 0
       ? // If no districts are selected, the whole map is light blue
-        'var(--background-contrast-blue-cumulus)'
+        'var(--background-contrast-info)'
       : '#FFFFFF'
 
   const getTextFill = (district: District, outside: boolean) => {

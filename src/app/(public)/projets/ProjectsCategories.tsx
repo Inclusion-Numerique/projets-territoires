@@ -26,11 +26,7 @@ export const ProjectsCategories = () => {
         return (
           <p
             key={category}
-            className={`fr-badge ${
-              isSelected
-                ? 'fr-badge--green-emeraude'
-                : 'fr-badge--green-emeraude'
-            } fr-badge--sm fr-mr-2v ${styles.categoryFilterTag}`}
+            className={`fr-badge fr-badge--sm fr-badge--success fr-badge--no-icon fr-mr-2v ${styles.categoryFilterTag}`}
             onClick={() => toggleCategory(category)}
             style={isSelected ? selectedStyle : unselectedStyle}
           >
@@ -41,7 +37,7 @@ export const ProjectsCategories = () => {
       <br />
       <button
         type="button"
-        className="fr-mt-4v fr-btn fr-btn--tertiary-no-outline fr-text--regular fr-btn--sm"
+        className="fr-mt-4v fr-btn--align-on-content fr-btn--tertiary-no-outline fr-text--regular fr-btn--sm"
         onClick={reset}
       >
         Voir toutes les thématiques

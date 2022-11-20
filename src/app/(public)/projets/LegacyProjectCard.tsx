@@ -49,7 +49,7 @@ export const LegacyProjectCard = forwardRef(
             <h6 className="fr-mb-2v fr-text--lg">{title}</h6>
             <div>
               {district ? (
-                <p className="fr-badge fr-badge--sm fr-badge--blue-cumulus fr-mr-2v">
+                <p className="fr-badge fr-badge--sm fr-badge--info fr-badge--no-icon fr-mr-2v">
                   {district}
                 </p>
               ) : null}
@@ -61,7 +61,7 @@ export const LegacyProjectCard = forwardRef(
               {categories.map((category) => (
                 <p
                   key={category}
-                  className="fr-badge fr-badge--green-emeraude fr-badge--sm fr-mr-2v"
+                  className="fr-badge fr-badge--sm fr-badge--success fr-badge--no-icon fr-mr-2v"
                 >
                   {category}
                 </p>
