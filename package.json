@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
-    "cli:update-legacy-projects": "env-cmd ts-node -r tsconfig-paths/register src/cli/updateLegacyProjectsFromProjethotequeWebsite.ts",
-    "cli:debug-categories": "env-cmd ts-node -r tsconfig-paths/register src/cli/debugCategories.ts",
+    "cli:update-legacy-projects": "ts-node -r dotenv/config -r tsconfig-paths/register src/cli/updateLegacyProjectsFromProjethotequeWebsite.ts",
+    "cli:debug-categories": "ts-node -r dotenv/config -r tsconfig-paths/register src/cli/debugCategories.ts",
     "test": "jest"
   },
   "engines": {

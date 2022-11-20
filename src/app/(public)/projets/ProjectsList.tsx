@@ -29,9 +29,11 @@ const ProjectsList = ({
     },
   )
 
+  const projects = projectsQuery.data?.projects
+
   return (
     <div className="fr-p-8v">
-      {projectsQuery.data?.projects.length === 0 ? (
+      {projects?.length === 0 ? (
         <div
           className={`fr-p-4v ${styles.legacyProjectCard}`}
           style={{
@@ -42,7 +44,22 @@ const ProjectsList = ({
           }}
         >
           <h6 style={{ width: '100%' }}>
-            Il n&apos;y a pas encore de projets pour votre selection.
+            Il n&apos;y a pas encore de projets pour votre recherche.
+          </h6>
+        </div>
+      ) : projects?.length ? (
+        <div
+          className={`fr-p-4v ${styles.legacyProjectCard}`}
+          style={{
+            textAlign: 'center',
+            width: '100%',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <h6 style={{ width: '100%' }}>
+            {projects.length} projet{projects.length > 1 ? 's' : ''}{' '}
+            correspondent à votre recherche.
           </h6>
         </div>
       ) : null}

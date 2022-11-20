@@ -41,3 +41,9 @@ Use profile for this project: `aws --profile=kime:scaleway:projets-territoires s
 See: https://www.scaleway.com/en/docs/storage/object/api-cli/object-storage-aws-cli/
 
 Update bucket CORS: `aws --profile=kime:scaleway:projets-territoires s3api put-bucket-cors --bucket projets-territoires-attachments --cors-configuration file://~/dev/anct/projets-territoires/src/scaleway/cors.json`
+
+## Interact with container
+
+View logs
+`scalingo --app projets-territoires logs`
+`scalingo -—app projets-territoires run bash`
