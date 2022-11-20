@@ -19,10 +19,7 @@ const ProjectsPage = async ({
   const activeDistrictsFilters = searchParamAsArray<District>(
     searchParams?.regions,
   )
-  // const projects = await findLegacyProjects({
-  //   activeCategoriesFilters,
-  //   activeDistrictsFilters,
-  // })
+
   return (
     <div
       className="fr-container fr-background-default--grey fr-p-0"

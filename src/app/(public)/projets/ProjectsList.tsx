@@ -9,6 +9,7 @@ import {
 } from '@pt/app/(public)/projets/projectFiltersStore'
 import { trpc } from '@pt/trpc'
 import { withTrpc } from '@pt/withTrpc'
+import { ProjectCards } from '@pt/app/(public)/projets/ProjectCards'
 
 const ProjectsList = ({
   initialProjects,
@@ -65,17 +66,17 @@ const ProjectsList = ({
       ) : null}
 
       <ul className="fr-raw-list">
-        {projectsQuery.data?.projects.map((project) => (
-          <LegacyProjectCard key={project.id} project={project} />
-        ))}
+        <ProjectCards projects={projectsQuery.data?.projects ?? []} />
+
         <li className="fr-mt-8v">
           <div
-            className={`fr-p-4v ${styles.legacyProjectCard}`}
+            className={`fr-p-4v`}
             style={{
               textAlign: 'center',
               width: '100%',
               flexDirection: 'column',
               alignItems: 'center',
+              boxShadow: '0 0 0 1px var(--border-default-grey)',
             }}
           >
             <h6 style={{ width: '100%' }}>

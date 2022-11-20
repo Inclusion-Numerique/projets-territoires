@@ -65,6 +65,11 @@ export const ProjectsFilters = ({
 }) => {
   const router = useRouter()
 
+  console.log('PROJECTS FILTERS PROPS', {
+    routingDistrictsFilters,
+    routingCategoriesFilters,
+  })
+
   const districtFilters = useDistrictFilters(
     ({ selected, reset, initialized, initialize, toggle }) => ({
       selected,
@@ -100,11 +105,10 @@ export const ProjectsFilters = ({
 
   useEffect(() => {
     return () => {
-      console.log('ON DESTROY')
       destroyDistrictFilters()
       destroyCategoriesFilters()
     }
-  }, [])
+  }, [destroyDistrictFilters, destroyCategoriesFilters])
 
   return (
     <div className="">
