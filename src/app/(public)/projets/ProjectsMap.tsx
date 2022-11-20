@@ -38,10 +38,26 @@ export const ProjectMap = () => {
     },
   })
 
-  const districtTextProps = (district: District, outside = false) => ({
-    fill: getTextFill(district, outside),
-    pointerEvents: 'none',
-  })
+  const districtTextProps = (district: District, outside = false) => {
+    const fill = getTextFill(district, outside)
+    if (outside) {
+      return {
+        fill,
+        cursor: 'pointer',
+        onClick: () => toggleDistrict(district),
+        onMouseEnter: () => {
+          setHovered(district)
+        },
+        onMouseLeave: () => {
+          setHovered(null)
+        },
+      }
+    }
+    return {
+      fill,
+      pointerEvents: 'none',
+    }
+  }
 
   return (
     <div style={{ width: '100%' }}>
