@@ -3,6 +3,7 @@ import { categories } from '@pt/anctProjects'
 import styles from './styles.module.scss'
 import { useCategoriesFilters } from '@pt/app/(public)/projets/projectFiltersStore'
 import { CSSProperties } from 'react'
+import { ProjectFilterResetButton } from '@pt/app/(public)/projets/ProjectFilterResetButton'
 
 const selectedStyle: CSSProperties = {}
 const unselectedStyle: CSSProperties = {
@@ -17,7 +18,7 @@ export const ProjectsCategories = () => {
 
   return (
     <div className="fr-px-8v">
-      <p className="fr-text--regular fr-text--bold fr-text--lg fr-mt-8v">
+      <p className="fr-text--regular fr-text--bold fr-text--lg fr-mt-8v fr-mb-2v">
         Thématiques
       </p>
       {categories.map((category) => {
@@ -26,7 +27,7 @@ export const ProjectsCategories = () => {
         return (
           <p
             key={category}
-            className={`fr-badge fr-badge--sm fr-badge--success fr-badge--no-icon fr-mr-2v ${styles.categoryFilterTag}`}
+            className={`fr-badge fr-badge--sm fr-badge--green-emeraude fr-mt-2v fr-mr-2v ${styles.categoryFilterTag}`}
             onClick={() => toggleCategory(category)}
             style={isSelected ? selectedStyle : unselectedStyle}
           >
@@ -35,13 +36,12 @@ export const ProjectsCategories = () => {
         )
       })}
       <br />
-      <button
-        type="button"
-        className="fr-mt-4v fr-btn--align-on-content fr-btn--tertiary-no-outline fr-text--regular fr-btn--sm"
-        onClick={reset}
-      >
-        Voir toutes les thématiques
-      </button>
+      <div className="fr-mt-4v">
+        <ProjectFilterResetButton
+          label={'Voir toutes les thématiques'}
+          onClick={reset}
+        />
+      </div>
     </div>
   )
 }

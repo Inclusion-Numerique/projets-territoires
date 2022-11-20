@@ -11,6 +11,7 @@ import {
 import shallow from 'zustand/shallow'
 import { isEqual } from 'lodash-es'
 import { useEffect } from 'react'
+import { ProjectFilterResetButton } from '@pt/app/(public)/projets/ProjectFilterResetButton'
 
 const createFilterSearchParams = (
   parameter: string,
@@ -114,13 +115,12 @@ export const ProjectsFilters = ({
             Régions
           </legend>
           <ProjectMap />
-          <button
-            type="button"
-            className="fr-mx-6v fr-btn fr-btn--tertiary-no-outline fr-text--regular fr-btn--sm"
-            onClick={districtFilters.reset}
-          >
-            Voir toutes les régions
-          </button>
+          <span className="fr-ml-6v">
+            <ProjectFilterResetButton
+              label={'Voir toutes les régions'}
+              onClick={districtFilters.reset}
+            />
+          </span>
           {displayRegionsCheckboxes && (
             <div className="fr-fieldset__content fr-mt-3v fr-px-4v">
               {districts.map((district) => (

@@ -3,16 +3,17 @@
 import { LegacyProject } from '@prisma/client'
 import { animated, config, useTrail } from '@react-spring/web'
 import { LegacyProjectCard } from '@pt/app/(public)/projets/LegacyProjectCard'
-import Link from 'next/link'
+import { ProjectListCta } from '@pt/app/(public)/projets/ProjectListCta'
 
 const AnimatedLegacyProjectCard = animated(LegacyProjectCard)
+const AnimatedProjectListCta = animated(ProjectListCta)
 
 const animationTo = { opacity: 1, translateY: 0, scale: 1 }
 const animationFrom =
   // Trouble with next env dev and spring not fireing on render
   process.env.NODE_ENV === 'development'
     ? animationTo
-    : { opacity: 0, translateY: -24, scale: 0.67 }
+    : { opacity: 0, translateY: -32, scale: 0.8 }
 
 export const ProjectCardsWithAnimation = ({
   projects,
@@ -38,29 +39,11 @@ export const ProjectCardsWithAnimation = ({
     <>
       {trails.map((props, i) =>
         displayCta && i === elementsCount - 1 ? (
-          <li key="cta" className={`${i > 0 ? 'fr-mt-8v' : ''}`} {...props}>
-            <div
-              className={`fr-p-4v`}
-              style={{
-                textAlign: 'center',
-                width: '100%',
-                flexDirection: 'column',
-                alignItems: 'center',
-                boxShadow: '0 0 0 1px var(--border-default-grey)',
-              }}
-            >
-              <h6 style={{ width: '100%' }}>
-                Vous êtes maire ou président d&apos;intercommunalité ?
-              </h6>
-              <Link
-                className={`fr-btn`}
-                href="/projet"
-                style={{ textAlign: 'center' }}
-              >
-                Partagez vos solutions&nbsp;!
-              </Link>
-            </div>
-          </li>
+          <AnimatedProjectListCta
+            key="list_cta"
+            nomargin={i === 0}
+            style={props}
+          />
         ) : (
           <AnimatedLegacyProjectCard
             key={projects[i].id}
@@ -85,31 +68,7 @@ export const ProjectCards = ({
       {projects.map((project, i) => (
         <LegacyProjectCard key={project.id} project={project} />
       ))}
-      {displayCta ? (
-        <li key="cta" className={`${projects.length > 0 ? 'fr-mt-8v' : ''}`}>
-          <div
-            className={`fr-p-4v`}
-            style={{
-              textAlign: 'center',
-              width: '100%',
-              flexDirection: 'column',
-              alignItems: 'center',
-              boxShadow: '0 0 0 1px var(--border-default-grey)',
-            }}
-          >
-            <h6 style={{ width: '100%' }}>
-              Vous êtes maire ou président d&apos;intercommunalité ?
-            </h6>
-            <Link
-              className={`fr-btn`}
-              href="/projet"
-              style={{ textAlign: 'center' }}
-            >
-              Partagez vos solutions&nbsp;!
-            </Link>
-          </div>
-        </li>
-      ) : null}
+      {displayCta ? <ProjectListCta key="cta" /> : null}
     </>
   )
 }
