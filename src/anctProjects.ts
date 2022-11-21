@@ -11,6 +11,7 @@ export const categories = [
   'Services au public',
   'Solidarité',
   'Soutien aux associations',
+  'Transition écologique',
   'Transport et mobilités',
 ] as const
 

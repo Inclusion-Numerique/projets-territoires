@@ -35,9 +35,10 @@ export const legacyCategoryToCategory = (
     return 'Attractivité'
   }
 
-  // contrat de relance et de transition écologique
-  if (legacyCategory === 'CRTE') {
-    return 'Solidarité'
+  // Contrat de relance et de transition écologique
+  // Petites villes de demain
+  if (legacyCategory === 'CRTE' || legacyCategory === 'PVD') {
+    return 'Transition écologique'
   }
   if (
     legacyCategory === 'Commerces' ||
@@ -46,20 +47,15 @@ export const legacyCategoryToCategory = (
   ) {
     return 'Développement économique'
   }
+
   if (legacyCategory == 'Inclusion sociale') {
     return 'Solidarité'
   }
   if (legacyCategory == 'Ingénierie sur mesure') {
     return 'Infrastructures locales'
   }
-  // Petites villes de demain
-  if (legacyCategory === 'PVD') {
-    return 'Attractivité'
-  }
+
   if (legacyCategory === 'Tiers-lieux') {
-    return 'Solidarité'
-  }
-  if (legacyCategory === 'Transition écologique') {
     return 'Solidarité'
   }
 

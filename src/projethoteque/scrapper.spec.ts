@@ -1,7 +1,7 @@
 import { listProjects } from '@pt/projethoteque/scrapper'
 
 describe('scrapper', () => {
-  it('Get the lists of all projects', async () => {
+  it.skip('Get the lists of all projects', async () => {
     const result = await listProjects()
 
     expect(result.projectItems.length).to.be.gte(100)
