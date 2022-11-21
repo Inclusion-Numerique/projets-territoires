@@ -20,6 +20,7 @@ export const PrivateConfig = {
     accessKey: process.env.SCALEWAY_ACCESS_KEY ?? '',
     secretKey: process.env.SCALEWAY_SECRET_KEY ?? '',
   },
+  openingTime: process.env.OPENING_TIME ?? null,
 }
 
 export const PublicConfig = {
