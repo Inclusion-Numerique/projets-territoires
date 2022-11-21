@@ -1,7 +1,11 @@
 import { PrivateConfig } from '@pt/config'
 import { redirect } from 'next/navigation'
+import { headers } from 'next/headers'
 
 const SalonDesMairesPage = () => {
+  // Disable static rendering
+  headers()
+
   const openingTime = PrivateConfig.openingTime
   if (!openingTime || new Date() >= new Date(openingTime)) {
     return redirect('/')
