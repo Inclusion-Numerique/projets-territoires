@@ -17,7 +17,7 @@ export const ProjectListCta = ({
           width: '100%',
           flexDirection: 'column',
           alignItems: 'center',
-          boxShadow: '0 0 0 1px var(--border-default-grey)',
+          boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 6px 12px 0 rgba(0,0,0,0.1)',
         }}
       >
         <h6 style={{ width: '100%' }}>
