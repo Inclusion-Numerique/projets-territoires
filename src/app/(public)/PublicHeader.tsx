@@ -94,14 +94,20 @@ const PublicHeader = () => {
             Fermer
           </button>
           <div className="fr-header__menu-links">
-            <ul className="fr-links-group" data-fr-js-header-links="true">
+            <ul className="fr-btns-group" data-fr-js-header-links="true">
               <li>
-                <Link
-                  href="/auth/signin"
-                  target="_self"
-                  className="fr-btn fr-btn--icon-left fr-icon-account-line"
-                >
-                  Espace ANCT
+                <Link className="fr-btn" href="/">
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link className="fr-btn" href="/projet">
+                  Partager
+                </Link>
+              </li>
+              <li>
+                <Link className="fr-btn" href="/projets">
+                  Voir les projets
                 </Link>
               </li>
             </ul>
