@@ -13,7 +13,6 @@ const SalonDesMairesPage = () => {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        background: 'goldenrod',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         justifyContent: 'center',
@@ -48,7 +47,8 @@ const SalonDesMairesPage = () => {
           Retrouvez les informations sur le salon des maires sur{' '}
           <a href="https://www.salondesmaires.com/">
             https://www.salondesmaires.com/
-          </a>{' '}
+          </a>
+          .
         </p>
       </div>
     </div>
