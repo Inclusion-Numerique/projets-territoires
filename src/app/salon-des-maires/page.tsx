@@ -43,16 +43,12 @@ const SalonDesMairesPage = () => {
       >
         <h2>Ouverture du site prochainement</h2>
         <p className="fr-mt-8v fr-text--lead">
-          La France des solution est un service qui ouvrira ses portes{' '}
-          <strong>le 22 novembre</strong> à l&apos;occasion du salon des maires
-          2022.
+          La France des solutions sera présentée par Christophe Béchu, Ministre
+          la transition écologique et de la cohésion des territoires lors du
+          Salon des Maires et des collectivités locales.
         </p>
         <p className="fr-text--lead">
-          Retrouvez les informations sur le salon des maires sur{' '}
-          <a href="https://www.salondesmaires.com/">
-            https://www.salondesmaires.com/
-          </a>
-          .
+          La plateforme sera accessible le 22 novembre matin.
         </p>
       </div>
     </div>
