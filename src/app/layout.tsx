@@ -24,7 +24,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
           href="/favicon/manifest.webmanifest"
           crossOrigin="use-credentials"
         />
-        <meta name="description" content="La France des solutions" />
+        <meta
+          name="description"
+          content="Ensemble, partageons les solutions des territoires"
+        />
         <link rel="icon" href="/favicon.ico" />
         {fontsToPreload.map((font) => (
           <link
