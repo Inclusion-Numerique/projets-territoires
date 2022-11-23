@@ -9,6 +9,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="fr" data-fr-theme="light" data-fr-scheme="light">
       <head>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>La France des solutions</title>
         <meta name="theme-color" content="#000091" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
