@@ -5,16 +5,22 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { prismaClient } from '@pt/prisma'
 import { PrivateConfig } from '@pt/config'
+import { sendVerificationRequest } from '@pt/auth/sendVerificationRequest'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prismaClient),
   pages: {
     signIn: '/auth/signin',
+    signOut: '/auth/signout',
     error: '/auth/error',
-    // signOut: '/auth/signout',
     verifyRequest: '/auth/verify',
   },
-  providers: [EmailProvider(PrivateConfig.Auth.Email)],
+  providers: [
+    EmailProvider({
+      ...PrivateConfig.Auth.Email,
+      sendVerificationRequest,
+    }),
+  ],
   callbacks: {
     signIn: ({ user }) => {
       return !!user.email?.endsWith('@anct.gouv.fr')
