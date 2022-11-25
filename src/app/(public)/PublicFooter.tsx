@@ -106,14 +106,11 @@ const PublicFooter = () => {
             {/*    Mentions légales*/}
             {/*  </a>*/}
             {/*</li>*/}
-            {/*<li className="fr-footer__bottom-item">*/}
-            {/*  <a*/}
-            {/*    className="fr-footer__bottom-link"*/}
-            {/*    href="/confidentialite"*/}
-            {/*  >*/}
-            {/*    Politique de confidentialité*/}
-            {/*  </a>*/}
-            {/*</li>*/}
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/confidentialite">
+                Politique de confidentialité
+              </a>
+            </li>
             <li className="fr-footer__bottom-item">
               <Link className="fr-footer__bottom-link" href="/accessibilite">
                 Accessibilité : non conforme
