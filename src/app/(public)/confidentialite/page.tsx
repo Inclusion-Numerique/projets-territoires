@@ -146,7 +146,8 @@ const ConfidentialityPage = () => {
             Vous pouvez vous désincrire de la newsletter soit en nous envoyant
             un email, soit en utilisant les liens de désinscription présents
             dans nos emails d&apos;alerte ou newsletter, ou directement dans le
-            formulaire d&apos;édition du profil, rubrique "Mon compte".
+            formulaire d&apos;édition du profil, rubrique &ldquo;Mon
+            compte&rdquo;.
           </p>
 
           <p>
