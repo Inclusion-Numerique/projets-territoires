@@ -1,9 +1,18 @@
 import { prismaClient } from '@pt/prisma'
 import { projectsCsvFilename } from '@pt/project/projectsDownload'
+import Link from 'next/link'
 
 const ProjectsPage = async () => {
   const projectsCount = await prismaClient.project.count()
   const downloadFilename = projectsCsvFilename()
+
+  const projects = await prismaClient.project.findMany({
+    include: {
+      attachments: true,
+      community: true,
+    },
+    orderBy: { created: 'desc' },
+  })
 
   return (
     <>
@@ -31,6 +40,73 @@ const ProjectsPage = async () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="fr-grid-row fr-mt-8v">
+        <div className="fr-col-12">
+          <h4 className="fr-card__title">
+            <span className="fr-icon-time-line fr-mr-2v" />
+            Derniers projets
+          </h4>
+        </div>
+        <div className="fr-col-12">
+          <div className="fr-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Collectivité</th>
+                  <th>Solution</th>
+                  <th>Nom</th>
+                  <th>Qualité</th>
+                  <th>Email</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody className="fr-table">
+                {projects.map(
+                  ({
+                    id,
+                    created,
+                    name,
+                    community,
+                    email,
+                    quality,
+                    solution,
+                    reference,
+                  }) => (
+                    <tr key={id}>
+                      <td>
+                        {created.toLocaleDateString()} à{' '}
+                        {created.toLocaleTimeString()}
+                      </td>
+                      <td>{community.name}</td>
+                      <td>{solution}</td>
+                      <td>{name}</td>
+                      <td>{quality}</td>
+                      <td>
+                        <a
+                          href={`mailto:${email}`}
+                          className="fr-link fr-link--sm"
+                        >
+                          {email}
+                        </a>
+                      </td>
+                      <td>
+                        <Link
+                          prefetch={false}
+                          className="fr-btn fr-btn--icon-left fr-btn--secondary fr-btn--sm fr-icon-eye-line"
+                          href={`/dashboard/${reference}`}
+                        >
+                          Détails
+                        </Link>
+                      </td>
+                    </tr>
+                  ),
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

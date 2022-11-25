@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { createSignedUploadUrl } from '@pt/server/createSignedUrl'
 
-export type EcgUploadApiSuccessResponse = { url: string; key: string }
+export type AttachmentUploadApiResponse = { url: string; key: string }
 
 const upload = async (
   req: NextApiRequest,
-  res: NextApiResponse<EcgUploadApiSuccessResponse | { error: string }>,
+  res: NextApiResponse<AttachmentUploadApiResponse | { error: string }>,
 ) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })

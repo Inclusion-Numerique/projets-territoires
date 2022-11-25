@@ -14,7 +14,7 @@ export const createSignedGetUrl = async ({
     s3,
     new GetObjectCommand({ Key: key, Bucket: PrivateConfig.S3.bucketId }),
     {
-      expiresIn: 3600,
+      expiresIn: 600,
     },
   )
   return { url }

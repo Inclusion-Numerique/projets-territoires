@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { createSignedGetUrl } from '@pt/server/createSignedUrl'
 
-export type SignAssetGetApiSuccessResponse = { url: string }
+export type AttachmentGetApiResponse = { url: string }
 
 const get = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -11,6 +11,8 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     // Get info from body
     const { key } = req.body
+
+    console.log('KEY', key)
 
     const { url } = await createSignedGetUrl({
       key,

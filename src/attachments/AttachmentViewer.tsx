@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css'
 import { Spinner } from '@pt/ui/Spinner'
 import axios from 'axios'
-import { EcgUploadApiSuccessResponse } from '@pt/pages/api/file/upload'
+import { AttachmentUploadApiResponse } from '@pt/pages/api/file/upload'
 
 export const AttachmentViewer = ({
   key,
@@ -17,7 +17,7 @@ export const AttachmentViewer = ({
 
   useEffect(() => {
     axios
-      .post<EcgUploadApiSuccessResponse>('/api/upload/get', {
+      .post<AttachmentUploadApiResponse>('/api/upload/get', {
         key,
       })
       .then((response) => response.data.url)

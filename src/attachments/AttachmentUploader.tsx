@@ -3,7 +3,7 @@ import { FileError, FileRejection, useDropzone } from 'react-dropzone'
 import { useState } from 'react'
 import axios from 'axios'
 import { Spinner } from '@pt/ui/Spinner'
-import { EcgUploadApiSuccessResponse } from '@pt/pages/api/file/upload'
+import { AttachmentUploadApiResponse } from '@pt/pages/api/file/upload'
 import styled from 'styled-components'
 
 type UploadingFileInfo = {
@@ -38,7 +38,7 @@ const AttachmentUploader = ({
 
     const uploadedFiles = await Promise.all(
       acceptedFiles.map(async (file): Promise<UploadingFileInfo> => {
-        const urlResult = await axios.post<EcgUploadApiSuccessResponse>(
+        const urlResult = await axios.post<AttachmentUploadApiResponse>(
           '/api/file/upload',
           {
             name: file.name,

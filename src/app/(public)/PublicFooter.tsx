@@ -79,43 +79,70 @@ const PublicFooter = () => {
                 </a>
               </li>
             </ul>
-            <div
-              className="fr-grid-row fr-grid-row fr-mt-4v"
-              style={{ width: '100%' }}
-            >
-              <Link
-                href="/auth/signin"
-                target="_self"
-                className="fr-btn fr-btn--sm fr-btn--icon-left fr-btn--tertiary fr-icon-user-setting-line"
-              >
-                Espace ANCT
-              </Link>
-            </div>
           </div>
         </div>
         <div className="fr-footer__bottom">
           <ul className="fr-footer__bottom-list">
             <li className="fr-footer__bottom-item">
-              <Link
-                href="/accessibility-statement"
-                className="fr-footer__bottom-link"
+              <a
+                className="fr-footer__bottom-link fr-link--icon-left fr-icon-user-setting-line"
+                href="/auth/signin"
               >
-                Accessibilité: non conforme
+                Espace ANCT
+              </a>
+            </li>
+            {/*<li className="fr-footer__bottom-item">*/}
+            {/*  <a className="fr-footer__bottom-link" href="/data">*/}
+            {/*    Données et API*/}
+            {/*  </a>*/}
+            {/*</li>*/}
+            {/*<li className="fr-footer__bottom-item">*/}
+            {/*  <a className="fr-footer__bottom-link" href="/contact">*/}
+            {/*    Nous contacter*/}
+            {/*  </a>*/}
+            {/*</li>*/}
+            {/*<li className="fr-footer__bottom-item">*/}
+            {/*  <a className="fr-footer__bottom-link" href="/mentions-legales">*/}
+            {/*    Mentions légales*/}
+            {/*  </a>*/}
+            {/*</li>*/}
+            {/*<li className="fr-footer__bottom-item">*/}
+            {/*  <a*/}
+            {/*    className="fr-footer__bottom-link"*/}
+            {/*    href="/confidentialite"*/}
+            {/*  >*/}
+            {/*    Politique de confidentialité*/}
+            {/*  </a>*/}
+            {/*</li>*/}
+            <li className="fr-footer__bottom-item">
+              <Link className="fr-footer__bottom-link" href="/accessibilite">
+                Accessibilité : non conforme
               </Link>
             </li>
-          </ul>
-          <div className="fr-footer__bottom-copy">
-            <p>
-              Sauf mention contraire, tous les contenus de ce site sont sous{' '}
+            <li className="fr-footer__bottom-item">
               <a
-                href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
+                className="fr-footer__bottom-link"
+                href="https://github.com/inclusion-numerique/projets-territoires"
                 target="_blank"
                 rel="noreferrer"
+                title="Code source"
               >
-                licence etalab-2.0
+                Code source
               </a>
-            </p>
-          </div>
+            </li>
+          </ul>
+        </div>
+        <div className="fr-footer__bottom-copy">
+          <p>
+            Sauf mention contraire, tous les contenus de ce site sont sous{' '}
+            <a
+              href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              licence etalab-2.0
+            </a>
+          </p>
         </div>
       </div>
     </footer>

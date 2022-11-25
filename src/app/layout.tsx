@@ -1,7 +1,7 @@
 import '@pt/styles/app.scss'
 import { PropsWithChildren } from 'react'
-import DsfrClient from '@pt/dsfr/dsfrClient'
-import Script from 'next/script'
+import { Matomo } from '@pt/app/Matomo'
+import { Dsfr } from '@pt/app/Dsfr'
 
 const fontsToPreload = ['Marianne-Regular', 'Marianne-Bold', 'Marianne-Medium']
 
@@ -40,22 +40,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
             type="font/woff2"
           />
         ))}
-        {/*TODO it does not work in this layout file :/*/}
-        {/*<Script id="matomo">*/}
-        {/*  {`var _paq = window._paq = window._paq || [];*/}
-        {/*    _paq.push(['trackPageView']);*/}
-        {/*    _paq.push(['enableLinkTracking']);*/}
-        {/*    (function() {*/}
-        {/*    var u="//matomo.incubateur.anct.gouv.fr/";*/}
-        {/*    _paq.push(['setTrackerUrl', u+'matomo.php']);*/}
-        {/*    _paq.push(['setSiteId', '4']);*/}
-        {/*    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];*/}
-        {/*    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);*/}
-        {/*  })();`}*/}
-        {/*</Script>*/}
+        <Dsfr />
+        <Matomo />
       </head>
       <body>{children}</body>
-      <DsfrClient />
     </html>
   )
 }
