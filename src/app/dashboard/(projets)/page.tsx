@@ -17,7 +17,7 @@ const ProjectsPage = async () => {
   return (
     <>
       <div className="fr-grid-row fr-pt-8v">
-        <h2>Solutions d'élus</h2>
+        <h2>Solutions d&apos;élus</h2>
       </div>
       <div className="fr-grid-row fr-mt-2v fr-grid-row--gutters">
         <div className="fr-col-12 fr-col-md-6">

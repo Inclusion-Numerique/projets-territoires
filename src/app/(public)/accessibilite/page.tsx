@@ -14,7 +14,7 @@ const AccessibilityStatementPage = () => {
       </p>
       <p>
         Cette déclaration d’accessibilité s’applique à{' '}
-        <strong>Solutions d'élus</strong>{' '}
+        <strong>Solutions d&apos;élus</strong>{' '}
         <span>
           (<span>https://lafrancedessolutions.anct.gouv.fr/</span>)
         </span>
@@ -22,7 +22,7 @@ const AccessibilityStatementPage = () => {
       </p>
       <h2>État de conformité</h2>
       <p>
-        <strong>Solutions d'élus</strong> est{' '}
+        <strong>Solutions d&apos;élus</strong> est{' '}
         <strong>
           <span data-printfilter="lowercase">non conforme</span>
         </strong>
@@ -35,9 +35,9 @@ const AccessibilityStatementPage = () => {
       <h2>Amélioration et contact</h2>
       <p>
         Si vous n’arrivez pas à accéder à un contenu ou à un service, vous
-        pouvez contacter le responsable de <span>Solutions d'élus</span> pour
-        être orienté vers une alternative accessible ou obtenir le contenu sous
-        une autre forme.
+        pouvez contacter le responsable de <span>Solutions d&apos;élus</span>{' '}
+        pour être orienté vers une alternative accessible ou obtenir le contenu
+        sous une autre forme.
       </p>
       <ul className="basic-information feedback h-card">
         <li>

@@ -195,8 +195,8 @@ const ConfidentialityPage = () => {
                   <td>envoi régulier ( mensuel) d’une lettre d’info</td>
                   <td>envoi d’emails</td>
                   <td>
-                    demande adressée à l’équipe Solutions d'élus, en vue d’une
-                    réponse personnalisée
+                    demande adressée à l’équipe Solutions d&apos;élus, en vue
+                    d’une réponse personnalisée
                   </td>
                 </tr>
                 <tr>
