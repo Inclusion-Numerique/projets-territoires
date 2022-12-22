@@ -16,7 +16,7 @@ export const sendVerificationRequest = async ({
   const result = await transport.sendMail({
     to: identifier,
     from: provider.from,
-    subject: `Connexion à La France des solutions`,
+    subject: `Connexion à Solutions d'élus`,
     text: emailSigninText({ url, host }),
     html: compileMjml(emailSignin({ url, host })),
   })

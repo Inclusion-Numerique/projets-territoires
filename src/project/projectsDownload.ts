@@ -3,7 +3,7 @@ import { getUrl } from '@pt/utils/baseUrl'
 import { dashboardRootPath } from '@pt/dashboard/dashboard'
 
 export const projectsCsvFilename = () =>
-  `La France des solutions - ${new Date().toISOString().slice(0, 10)}.csv`
+  `Solutions d'élus - ${new Date().toISOString().slice(0, 10)}.csv`
 
 const csvHeaders = [
   'Référence',

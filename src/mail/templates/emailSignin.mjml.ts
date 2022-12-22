@@ -5,7 +5,7 @@ export const emailSigninText = ({
   host: string
   url: string
 }): string => {
-  return `Pour se connecter à La France des solutions, merci d'utiliser le lien suivant :\n${url}\n\n`
+  return `Pour se connecter à Solutions d'élus, merci d'utiliser le lien suivant :\n${url}\n\n`
 }
 
 export const emailSignin = ({
@@ -24,7 +24,7 @@ export const emailSignin = ({
           font-style="bold"
           font-size="${24}px"
         >
-          Connexion à La France des solutions
+          Connexion à Solutions d'élus
         </mj-text>
         <mj-text>
          Voici votre lien de connexion sécurisé à usage unique :

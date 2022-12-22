@@ -11,7 +11,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>La France des solutions</title>
+        <title>Solutions d'élus</title>
         <meta name="theme-color" content="#000091" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />

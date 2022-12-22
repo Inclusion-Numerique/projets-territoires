@@ -25,7 +25,7 @@ export const ViewAttachmentButton = ({
     )
 
     if (download) {
-      const fileName = `La France des solutions - ${reference} - ${name}`
+      const fileName = `Solutions d'élus - ${reference} - ${name}`
       saveAs(urlResult.data.url, fileName)
       return
     }
