@@ -9,7 +9,7 @@ async function createEmailVarDirIfItDoesNotExist(): Promise<void> {
     return
   }
 
-  await fs.mkdir(varDir)
+  await fs.mkdir(varDir, { recursive: true })
 }
 
 export async function outputHtmlTemplate(
