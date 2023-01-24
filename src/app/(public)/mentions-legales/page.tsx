@@ -16,7 +16,7 @@ const LegalPage = () => {
         Cette déclaration d’accessibilité s’applique à{' '}
         <strong>Solutions d&apos;élus</strong>{' '}
         <span>
-          (<span>https://lafrancedessolutions.anct.gouv.fr/</span>)
+          (<span>https://solutionsdelus.gouv.fr</span>)
         </span>
         .
       </p>
