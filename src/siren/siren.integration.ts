@@ -7,6 +7,7 @@ describe('siren', () => {
     expect(result.results).toStrictEqual([
       {
         id: '98461-lyon',
+        code: '69123',
         text: 'Lyon (Commune – 69001, 69002, 69003, 69004, 69005, 69006, 69007, 69008, 69009)',
         name: 'Lyon',
         scale: 'Commune',
