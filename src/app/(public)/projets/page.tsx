@@ -1,58 +1,44 @@
-'use client'
+import styles from '@pt/app/(public)/styles.module.scss'
+import { ProjectsListContainer } from '@pt/app/(public)/projets/ProjectsListContainer'
+import { getProjectsList } from '@pt/legacyProject/projectsList'
 
-import { District } from '@pt/projethoteque/legacyProjects'
-import { ProjectsFilters } from '@pt/app/(public)/projets/ProjectsFilters'
-import { ProjectsCategories } from '@pt/app/(public)/projets/ProjectsCategories'
-import ProjectsList from '@pt/app/(public)/projets/ProjectsList'
-import { searchParamAsArray } from '@pt/utils/searchParams'
-import { Category } from '@pt/anctProjects'
+// Revalidate this page every day
+export const revalidate = 86400
 
-const ProjectsPage = ({
-  searchParams,
-}: {
-  searchParams?: {
-    thematiques?: string[] | string
-    regions?: string[] | string
-  }
-}) => {
-  const activeCategoriesFilters = searchParamAsArray<Category>(
-    searchParams?.thematiques,
-  )
-  const activeDistrictsFilters = searchParamAsArray<District>(
-    searchParams?.regions,
-  )
+const ProjectsPage = async () => {
+  // Filtering and pagination is done in the frontend
+  // We have only a small dataset of projects so this is way more performant
+  const projects = await getProjectsList()
 
   return (
-    <div
-      className="fr-container fr-background-default--grey fr-p-0"
-      style={{
-        marginTop: '-25vh',
-        boxShadow: '0 0 0 1px var(--border-default-grey)',
-      }}
-    >
-      <div className="fr-grid-row fr-p-0">
-        <div className="fr-col-12 fr-col-md-4 fr-p-0 fr-background-alt--grey">
-          <aside
-            className="fr-sidemenu fr-sidemenu--sticky fr-p-0"
-            style={{
-              boxShadow: 'inset -1px 0 0 0 var(--border-default-grey)',
-            }}
-            aria-label="Menu latéral"
-          >
-            <ProjectsFilters
-              routingCategoriesFilters={activeCategoriesFilters}
-              routingDistrictsFilters={activeDistrictsFilters}
-            />
-          </aside>
-        </div>
-        <div className="fr-col-12 fr-col-md-8">
-          <ProjectsCategories />
-          <div className="fr-px-8v fr-pb-8v">
-            <ProjectsList initialProjects={null} />
+    <>
+      <div className={`${styles.withImageBackground} fr-pb-20v`}>
+        <div
+          className="fr-container fr-py-20v"
+          style={{ position: 'relative' }}
+        >
+          <div className="fr-grid-row fr-grid-row--center">
+            <div className={`fr-col-12 fr-col-md-10 fr-col-lg-8`}>
+              <h1
+                className={`fr-display--xs  fr-mb-0 ${styles.titleOnBackground}`}
+              >
+                Retrouvez ici les projets et réalisations des collectivités.
+              </h1>
+            </div>
           </div>
         </div>
+        <div
+          className="fr-container fr-background-default--grey fr-p-0"
+          style={{
+            position: 'relative',
+            boxShadow: '0 0 0 1px var(--border-default-grey)',
+          }}
+        >
+          <ProjectsListContainer projects={projects} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
+
 export default ProjectsPage

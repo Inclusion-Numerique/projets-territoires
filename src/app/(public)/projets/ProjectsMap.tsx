@@ -1,5 +1,5 @@
 import { District } from '@pt/projethoteque/legacyProjects'
-import { useDistrictFilters } from '@pt/app/(public)/projets/projectFiltersStore'
+import { useDistrictFilters } from '@pt/legacyProject/projectFiltersStore'
 
 export const ProjectMap = () => {
   const selectedDistricts = useDistrictFilters(({ selected }) => selected)
@@ -7,11 +7,11 @@ export const ProjectMap = () => {
   // const [_hovered, setHovered] = useState<District | null>(null)
 
   const getFill = (district: District) => {
-    if (selectedDistricts.size === 0 || selectedDistricts.has(district)) {
+    if (selectedDistricts.has(district)) {
       return 'var(--text-action-high-blue-france)'
     }
 
-    return 'var(--background-contrast-info)'
+    return 'var(--blue-france-850-200)'
   }
 
   const getTextFill = (district: District, outside: boolean) => {
@@ -19,7 +19,7 @@ export const ProjectMap = () => {
       return 'var(--text-action-high-blue-france)'
     }
 
-    return selectedDistricts.has(district) || selectedDistricts.size === 0
+    return selectedDistricts.has(district)
       ? 'white'
       : 'var(--text-action-high-blue-france)'
   }

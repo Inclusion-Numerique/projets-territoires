@@ -34,13 +34,14 @@ const PublicFooter = () => {
                 title="Site Web de l'Agence Nationale de la Cohésion des Territoires"
                 className="fr-footer__brand-link"
               >
-                <Image
-                  src="/images/logo-anct.svg"
-                  alt="Logo de l'Agence Nationale de la Cohésion des Territoires"
-                  width={200}
-                  height={200}
-                  className="fr-footer__logo"
-                />
+                <picture>
+                  <img
+                    src="/images/logo-anct.svg"
+                    alt="Logo de l'Agence Nationale de la Cohésion des Territoires"
+                    width={200}
+                    className="fr-footer__logo"
+                  />
+                </picture>
               </a>
             </div>
           </div>
@@ -50,6 +51,7 @@ const PublicFooter = () => {
                 <a
                   href="https://gouvernement.fr"
                   className="fr-footer__content-link"
+                  target="_blank"
                 >
                   gouvernement.fr
                 </a>
@@ -58,6 +60,7 @@ const PublicFooter = () => {
                 <a
                   href="https://service-public.fr"
                   className="fr-footer__content-link"
+                  target="_blank"
                 >
                   service-public.fr
                 </a>
@@ -66,6 +69,7 @@ const PublicFooter = () => {
                 <a
                   href="https://data.gouv.fr"
                   className="fr-footer__content-link"
+                  target="_blank"
                 >
                   data.gouv.fr
                 </a>
@@ -74,6 +78,7 @@ const PublicFooter = () => {
                 <a
                   href="https://beta.gouv.fr"
                   className="fr-footer__content-link"
+                  target="_blank"
                 >
                   beta.gouv.fr
                 </a>
@@ -84,31 +89,16 @@ const PublicFooter = () => {
         <div className="fr-footer__bottom">
           <ul className="fr-footer__bottom-list">
             <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/confidentialite">
+                Politique de confidentialité
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
               <a
                 className="fr-footer__bottom-link fr-link--icon-left fr-icon-user-setting-line"
                 href="/auth/signin"
               >
                 Espace ANCT
-              </a>
-            </li>
-            {/*<li className="fr-footer__bottom-item">*/}
-            {/*  <a className="fr-footer__bottom-link" href="/data">*/}
-            {/*    Données et API*/}
-            {/*  </a>*/}
-            {/*</li>*/}
-            {/*<li className="fr-footer__bottom-item">*/}
-            {/*  <a className="fr-footer__bottom-link" href="/contact">*/}
-            {/*    Nous contacter*/}
-            {/*  </a>*/}
-            {/*</li>*/}
-            {/*<li className="fr-footer__bottom-item">*/}
-            {/*  <a className="fr-footer__bottom-link" href="/mentions-legales">*/}
-            {/*    Mentions légales*/}
-            {/*  </a>*/}
-            {/*</li>*/}
-            <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="/confidentialite">
-                Politique de confidentialité
               </a>
             </li>
             <li className="fr-footer__bottom-item">

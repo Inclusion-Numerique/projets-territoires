@@ -1,6 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["interactiveTransactions", "fullTextSearch"]
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -103,6 +103,8 @@ model Attachment {
 
 model LegacyProject {
   id               String   @id
+  // Display the project in the showcase? If yes, its order in the showcase
+  showcase     Int?
   pageIndex        Int
   itemIndexInPage  Int
   imagePath        String

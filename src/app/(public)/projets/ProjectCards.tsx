@@ -1,9 +1,9 @@
 'use client'
 
-import { LegacyProject } from '@prisma/client'
 import { animated, config, useTrail } from '@react-spring/web'
 import { LegacyProjectCard } from '@pt/app/(public)/projets/LegacyProjectCard'
 import { ProjectListCta } from '@pt/app/(public)/projets/ProjectListCta'
+import { ProjectListItem } from '@pt/legacyProject/projectsList'
 
 const AnimatedLegacyProjectCard = animated(LegacyProjectCard)
 const AnimatedProjectListCta = animated(ProjectListCta)
@@ -19,7 +19,7 @@ export const ProjectCardsWithAnimation = ({
   projects,
   displayCta,
 }: {
-  projects: LegacyProject[]
+  projects: ProjectListItem[]
   displayCta?: boolean
 }) => {
   const elementsCount = displayCta ? projects.length + 1 : projects.length
@@ -39,11 +39,7 @@ export const ProjectCardsWithAnimation = ({
     <>
       {trails.map((props, i) =>
         displayCta && i === elementsCount - 1 ? (
-          <AnimatedProjectListCta
-            key="list_cta"
-            nomargin={i === 0}
-            style={props}
-          />
+          <AnimatedProjectListCta key="list_cta" style={props} />
         ) : (
           <AnimatedLegacyProjectCard
             key={projects[i].id}
@@ -60,7 +56,7 @@ export const ProjectCards = ({
   projects,
   displayCta,
 }: {
-  projects: LegacyProject[]
+  projects: ProjectListItem[]
   displayCta?: boolean
 }) => {
   return (

@@ -41,7 +41,7 @@ export function RadioFormField<T extends FieldValues>({
               {label}
               {hint ? <span className="fr-hint-text">{hint}</span> : null}
             </legend>
-            <div className="fr-fieldset__content">
+            <div className="fr-fieldset__content fr-mt-4v">
               {options.map((option, index) => (
                 <div key={option.value} className="fr-radio-group">
                   <input

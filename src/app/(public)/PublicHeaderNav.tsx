@@ -1,9 +1,12 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import * as navigation from 'next/navigation'
 
 export const PublicHeaderNav = () => {
-  const pathname = usePathname()
+  const pathname =
+    // TODO This is an error in typings of next/navigation in 13.2, remove this casting when next fix this
+    (navigation as unknown as { usePathname: () => string }).usePathname() ??
+    '/'
 
   return (
     <ul className="fr-nav__list">

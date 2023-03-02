@@ -1,35 +1,25 @@
 import Link from 'next/link'
 import { CSSProperties } from 'react'
+import styles from '@pt/app/(public)/projets/styles.module.scss'
 
-export const ProjectListCta = ({
-  nomargin,
-  style,
-}: {
-  nomargin?: boolean
-  style?: CSSProperties
-}) => {
+export const ProjectListCta = ({ style }: { style?: CSSProperties }) => {
   return (
-    <li key="cta" className={`${nomargin ? '' : 'fr-mt-8v'}`} style={style}>
-      <div
-        className={`fr-p-4v`}
-        style={{
-          textAlign: 'center',
-          width: '100%',
-          flexDirection: 'column',
-          alignItems: 'center',
-          boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 6px 12px 0 rgba(0,0,0,0.1)',
-        }}
-      >
-        <h6 style={{ width: '100%' }}>
-          Vous êtes maire ou président d&apos;intercommunalité ?
-        </h6>
-        <Link
-          className={`fr-btn`}
-          href="/projet"
-          style={{ textAlign: 'center' }}
+    <li key="cta" style={style}>
+      <div className={`${styles.legacyProjectCard}`} style={{ minHeight: 0 }}>
+        <div
+          className={`fr-p-8v`}
+          style={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          Partagez vos solutions&nbsp;!
-        </Link>
+          <h6>Vous êtes maire ou président d&apos;intercommunalité ?</h6>
+          <Link className={`fr-btn fr-mt-2v fr-py-4v fr-px-4w`} href="/projet">
+            Partagez vos solutions&nbsp;!
+          </Link>
+        </div>
       </div>
     </li>
   )

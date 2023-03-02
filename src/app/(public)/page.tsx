@@ -1,60 +1,67 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
 import { categories, categoryProjectsLink } from '@pt/anctProjects'
+import { Showcase } from '@pt/app/(public)/Showcase'
+import { getShowcaseProjects } from '@pt/legacyProject/showcaseProjects'
 
-export default function HomePage() {
+// Revalidate this page every day
+export const revalidate = 86400
+
+export default async function HomePage() {
+  const projects = await getShowcaseProjects()
   return (
     <>
-      <div className={styles.cover}>
-        <div className="fr-container fr-py-6w">
+      <div
+        className="fr-background-alt--blue-france"
+        style={{ position: 'relative' }}
+      >
+        <div className="fr-container">
           <div className="fr-grid-row fr-grid-row--gutters">
-            <div className="fr-col-12 fr-col-offset-md-2 fr-col-md-8">
-              <h1 className={`fr-display--sm ${styles.jumboText}`}>
-                Ensemble, partageons les solutions des territoires
+            <div className="fr-col-12 fr-col-md-6 fr-pr-md-1w">
+              <h1
+                className={`fr-text-title--blue-france fr-mt-20v ${styles.title}`}
+              >
+                Ensemble,
+                <br />
+                partageons les solutions
+                <br /> des territoires
               </h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="fr-container fr-py-6w">
-        <div className="fr-grid-row fr-grid-row--gutters">
-          <div className="fr-col-12 fr-col-offset-md-2 fr-col-md-8">
-            <div
-              className={`fr-background-default--grey fr-p-6w ${styles.jumboCard}`}
-            >
-              <p className="fr-text--lead">
-                «
-                <strong>
-                  La transition écologique est le défi majeur pour notre pays.
-                </strong>{' '}
+              <p className={`fr-mt-10v ${styles.lead}`}>
+                « La transition écologique est le défi majeur pour notre pays.
                 Les collectivités territoriales sont en première ligne pour y
                 faire face. Le partage de solutions concrètes, des réussites
                 faites ici ou là, est indispensable pour accélération la
                 transition écologique de nos territoires. Ensemble, partageons
                 les solutions. »
               </p>
-              <p
-                className="fr-text--lead fr-mb-2v"
-                style={{ textAlign: 'right' }}
-              >
-                Christophe Béchu
-              </p>
-              <p className="fr-text fr-mb-0" style={{ textAlign: 'right' }}>
+              <p className={`fr-text fr-mb-20v fr-text--bold`}>
+                Christophe Béchu,
+                <br />
                 Ministre de la Transition écologique <br />
                 et de la Cohésion des territoires
               </p>
             </div>
+
+            <div className={`fr-hidden fr-unhidden-md fr-pl-4w`}>
+              <div
+                title="Photographie d'un village français"
+                className={`${styles.asideCover}`}
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div className="fr-py-4v">
+      <div className="fr-py-20v">
+        <Showcase projects={projects} />
+      </div>
+      <div className="fr-py-30v fr-background-alt--blue-france">
         <div className="fr-container">
-          <div className="fr-grid-row fr-mt-1v fr-mb-8v fr-grid-row--gutters">
+          <div className="fr-grid-row fr-grid-row--gutters">
             <div className="fr-col-12 fr-col-md-6">
               <div className="fr-btns-group fr-btns-group--lg">
                 <Link
                   href="/projet"
-                  className="fr-btn fr-py-8v"
+                  className="fr-btn fr-py-8v fr-mb-0"
                   style={{ textAlign: 'center' }}
                 >
                   Je suis maire ou président d&apos;intercommunalité,
@@ -67,7 +74,7 @@ export default function HomePage() {
               <div className="fr-btns-group fr-btns-group--lg">
                 <Link
                   href="/projets"
-                  className="fr-btn fr-btn--secondary fr-py-8v"
+                  className="fr-btn fr-btn--secondary fr-py-8v fr-mb-0"
                   style={{ textAlign: 'center' }}
                 >
                   Je suis maire ou président d&apos;intercommunalité, <br />
@@ -78,11 +85,13 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="fr-background-alt--blue-france">
-        <div className="fr-container fr-py-6w">
+      <div>
+        <div className="fr-container fr-py-30v">
           <div className="fr-grid-row fr-grid-row--gutters">
             <div className="fr-col-12">
-              <h2>Découvrez des solutions partout en France</h2>
+              <h2 className="fr-mb-10v">
+                Découvrez des solutions partout en France
+              </h2>
             </div>
             {categories.map((category) => (
               <div key={category} className="fr-col-12 fr-col-md-6 fr-col-lg-4">
@@ -100,11 +109,11 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div>
-        <div className="fr-container fr-pt-6w fr-pb-10w">
+      <div className="fr-background-alt--grey fr-py-30v">
+        <div className="fr-container">
           <div className="fr-grid-row fr-grid-row--gutters">
             <div className="fr-col-12">
-              <h2>Questions fréquentes</h2>
+              <h2 className="fr-mb-10v">Questions fréquentes</h2>
             </div>
             <div
               className="fr-accordions-group"

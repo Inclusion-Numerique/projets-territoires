@@ -1,4 +1,4 @@
-import '@pt/styles/app.scss'
+import '@pt/app/app.css'
 import { PropsWithChildren } from 'react'
 import { Matomo } from '@pt/app/Matomo'
 import { Dsfr } from '@pt/app/Dsfr'

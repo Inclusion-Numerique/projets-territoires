@@ -1,15 +1,7 @@
 'use client'
 import { categories } from '@pt/anctProjects'
-import styles from './styles.module.scss'
-import { useCategoriesFilters } from '@pt/app/(public)/projets/projectFiltersStore'
-import { CSSProperties } from 'react'
 import { ProjectFilterResetButton } from '@pt/app/(public)/projets/ProjectFilterResetButton'
-
-const selectedStyle: CSSProperties = {}
-const unselectedStyle: CSSProperties = {
-  // Could not find / apply opacity on emeraude bg color
-  backgroundColor: 'rgba(195,250,213, 0.3)',
-}
+import { useCategoriesFilters } from '@pt/legacyProject/projectFiltersStore'
 
 export const ProjectsCategories = () => {
   const selectedCategories = useCategoriesFilters(({ selected }) => selected)
@@ -17,22 +9,23 @@ export const ProjectsCategories = () => {
   const reset = useCategoriesFilters(({ reset }) => reset)
 
   return (
-    <div className="fr-px-8v">
+    <div className="fr-px-2w fr-px-md-4w">
       <p className="fr-text--regular fr-text--bold fr-text--lg fr-mt-8v fr-mb-2v">
         Thématiques
       </p>
       {categories.map((category) => {
-        const isSelected =
-          selectedCategories.size === 0 || selectedCategories.has(category)
+        const isSelected = selectedCategories.has(category)
         return (
-          <p
+          <button
+            type="button"
             key={category}
-            className={`fr-badge fr-badge--sm fr-badge--green-emeraude fr-mt-2v fr-mr-2v ${styles.categoryFilterTag}`}
+            className={`fr-tag fr-mt-2v fr-mr-2v `}
             onClick={() => toggleCategory(category)}
-            style={isSelected ? selectedStyle : unselectedStyle}
+            aria-pressed={isSelected ? 'true' : 'false'}
+            aria-label={`Retirer ${category}`}
           >
             {category}
-          </p>
+          </button>
         )
       })}
       <br />
