@@ -51,7 +51,7 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
-      <div className="fr-py-20v">
+      <div className="fr-pt-20v">
         <Showcase projects={projects} />
       </div>
       <div className="fr-py-30v fr-background-alt--blue-france">

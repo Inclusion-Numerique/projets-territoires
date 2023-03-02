@@ -58,7 +58,7 @@ export const Showcase = ({ projects }: { projects: ShowcaseProject[] }) => {
           Voir tous les projets
         </Link>
       </div>
-      <div className={`fr-mt-12v ${styles.showcaseContainer}`}>
+      <div className={`fr-pt-12v fr-pb-20v ${styles.showcaseContainer}`}>
         <div
           className={styles.cardsWrapper}
           style={{
@@ -79,15 +79,22 @@ export const Showcase = ({ projects }: { projects: ShowcaseProject[] }) => {
 }
 
 const ProjectCard = forwardRef<
-  HTMLDivElement,
+  HTMLAnchorElement,
   { project: ShowcaseProject; style?: CSSProperties | undefined }
 >(
   (
     { project: { title, slug, city, district, imagePath, imageAlt }, style },
     ref,
   ) => {
+    const href = legacyProjectUrl(slug)
     return (
-      <div ref={ref} className={styles.card}>
+      <a
+        ref={ref}
+        href={href}
+        title={`Voir le projet "${title}"`}
+        target="_blank"
+        className={styles.card}
+      >
         <picture>
           <img src={legacyProjectImageUrl(imagePath)} alt={imageAlt} />
         </picture>
@@ -100,16 +107,11 @@ const ProjectCard = forwardRef<
             {city}
           </p>
           <h6 style={{ flexGrow: 1 }}>{title}</h6>
-          <a
-            href={legacyProjectUrl(slug)}
-            target="_blank"
-            className="fr-link fr-link--icon-right fr-icon-arrow-right-line fr-mt-4v"
-            style={{ display: 'inline-block' }}
-          >
+          <p className="fr-link fr-link--icon-right fr-icon-external-link-line fr-mt-4v">
             Voir le projet
-          </a>
+          </p>
         </div>
-      </div>
+      </a>
     )
   },
 )

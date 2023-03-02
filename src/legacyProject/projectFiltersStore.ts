@@ -1,11 +1,13 @@
 import { create } from 'zustand'
 import { District } from '@pt/projethoteque/legacyProjects'
 import { Category } from '@pt/anctProjects'
+import { setsAreEqual } from '@pt/utils/setsAreEqual'
 
 type FiltersState<T> = {
   selected: Set<T>
-  toggle: (district: T) => void
+  toggle: (value: T) => void
   reset: () => void
+  initialize: (values: T[]) => void
 }
 
 const createFilterStore = <T = string>() =>
@@ -22,6 +24,14 @@ const createFilterStore = <T = string>() =>
         return { selected: cloned }
       }),
     reset: () => set({ selected: new Set() }),
+    initialize: (values: T[]) =>
+      set(({ selected }) => {
+        const initValues = new Set(values)
+        if (setsAreEqual(selected, initValues)) {
+          return {}
+        }
+        return { selected: initValues }
+      }),
   }))
 
 export const useDistrictFilters = createFilterStore<District>()

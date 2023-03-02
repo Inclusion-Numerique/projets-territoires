@@ -1,5 +1,15 @@
 .legacyProjectCard {
+
+  text-decoration: none !important;
+  background: none !important;
+  &::after{
+    display: none !important;
+  }
+
   border: 1px solid var(--border-default-grey);
+  &:hover {
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
   width: 100%;
   min-height: 260px;
   display: flex;
@@ -9,8 +19,6 @@
     height: 100%;
     object-fit: cover;
   }
-
-
   @media (min-width: 48em) {
     /*! media md */
     flex-direction: row;

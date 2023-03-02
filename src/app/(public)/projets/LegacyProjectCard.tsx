@@ -35,7 +35,12 @@ export const LegacyProjectCard = forwardRef(
 
     return (
       <li style={style} ref={ref}>
-        <div className={`fr-mb-4v ${styles.legacyProjectCard}`}>
+        <a
+          className={`fr-mb-4v ${styles.legacyProjectCard}`}
+          href={href}
+          title={`Voir le projet "${title}"`}
+          target="_blank"
+        >
           <picture className={styles.picture}>
             <img
               id={`${id}__image`}
@@ -64,16 +69,11 @@ export const LegacyProjectCard = forwardRef(
                 </li>
               ))}
             </ul>
-            <a
-              href={legacyProjectUrl(slug)}
-              target="_blank"
-              className="fr-link fr-link--icon-right fr-icon-arrow-right-line fr-mt-4v"
-              style={{ display: 'inline-block' }}
-            >
+            <p className="fr-link fr-link--icon-right fr-icon-external-link-line fr-mt-4v">
               Voir le projet
-            </a>
+            </p>
           </div>
-        </div>
+        </a>
       </li>
     )
   },

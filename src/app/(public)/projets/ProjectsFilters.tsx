@@ -6,6 +6,7 @@ import { useDistrictFilters } from '@pt/legacyProject/projectFiltersStore'
 
 export const ProjectsFilters = () => {
   const reset = useDistrictFilters(({ reset }) => reset)
+  const isEmpty = useDistrictFilters(({ selected }) => selected.size === 0)
 
   return (
     <div className="fr-px-2w fr-px-sm-1w fr-px-md-0">
@@ -21,6 +22,7 @@ export const ProjectsFilters = () => {
           <span className="fr-ml-6v">
             <ProjectFilterResetButton
               label={'Voir toutes les régions'}
+              hidden={isEmpty}
               onClick={reset}
             />
           </span>

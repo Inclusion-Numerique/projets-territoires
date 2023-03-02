@@ -1,11 +1,21 @@
 import styles from '@pt/app/(public)/styles.module.scss'
 import { ProjectsListContainer } from '@pt/app/(public)/projets/ProjectsListContainer'
 import { getProjectsList } from '@pt/legacyProject/projectsList'
+import { Category } from '@pt/anctProjects'
+import { District } from '@pt/projethoteque/legacyProjects'
+import { parseArraySearchParam } from '@pt/utils/parseArraySearchParam'
 
-// Revalidate this page every day
-export const revalidate = 86400
+// Need to SSR since search params are dynamic
+export const revalidate = 0
 
-const ProjectsPage = async () => {
+const ProjectsPage = async ({
+  searchParams,
+}: {
+  searchParams?: {
+    thematiques?: Category | Category[]
+    regions?: District | District[]
+  }
+}) => {
   // Filtering and pagination is done in the frontend
   // We have only a small dataset of projects so this is way more performant
   const projects = await getProjectsList()
@@ -22,7 +32,7 @@ const ProjectsPage = async () => {
               <h1
                 className={`fr-display--xs  fr-mb-0 ${styles.titleOnBackground}`}
               >
-                Retrouvez ici les projets et réalisations des collectivités.
+                Retrouvez ici les projets et réalisations des collectivités
               </h1>
             </div>
           </div>
@@ -34,7 +44,15 @@ const ProjectsPage = async () => {
             boxShadow: '0 0 0 1px var(--border-default-grey)',
           }}
         >
-          <ProjectsListContainer projects={projects} />
+          <ProjectsListContainer
+            initialDistrictsFilter={parseArraySearchParam(
+              searchParams?.regions,
+            )}
+            initialCategoriesFilter={parseArraySearchParam(
+              searchParams?.thematiques,
+            )}
+            projects={projects}
+          />
         </div>
       </div>
     </>

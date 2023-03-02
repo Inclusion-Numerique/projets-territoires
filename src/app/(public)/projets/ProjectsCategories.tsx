@@ -7,6 +7,7 @@ export const ProjectsCategories = () => {
   const selectedCategories = useCategoriesFilters(({ selected }) => selected)
   const toggleCategory = useCategoriesFilters(({ toggle }) => toggle)
   const reset = useCategoriesFilters(({ reset }) => reset)
+  const isEmpty = useCategoriesFilters(({ selected }) => selected.size === 0)
 
   return (
     <div className="fr-px-2w fr-px-md-4w">
@@ -33,6 +34,7 @@ export const ProjectsCategories = () => {
         <ProjectFilterResetButton
           label={'Voir toutes les thématiques'}
           onClick={reset}
+          hidden={isEmpty}
         />
       </div>
     </div>

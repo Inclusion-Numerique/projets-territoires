@@ -30,7 +30,7 @@ const getSizesFromDom = ({
   firstCardRef,
   containerRef,
 }: {
-  firstCardRef: RefObject<HTMLDivElement>
+  firstCardRef: RefObject<HTMLAnchorElement>
   containerRef: RefObject<HTMLDivElement>
 }) => {
   const containerElement = containerRef.current
@@ -74,7 +74,7 @@ export const useShowcase = ({ count }: { count: number }) => {
 
   const offsetString = `-${offset}px`
 
-  const firstCardRef = useRef<HTMLDivElement>(null)
+  const firstCardRef = useRef<HTMLAnchorElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const next = () => {

@@ -46,6 +46,11 @@
 }
 
 .card {
+  text-decoration: none !important;
+  background: none !important;
+  &::after{
+    display: none !important;
+  }
 
   width: 100%;
   margin-right: 16px;
@@ -57,7 +62,11 @@
     /* lg */
     margin-right: 24px;
   }
+
   border: 1px solid var(--border-default-grey);
+  &:hover {
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
   display: flex;
   flex-direction: column;
   flex-grow: 0;
