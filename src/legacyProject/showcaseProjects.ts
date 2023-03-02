@@ -2,8 +2,12 @@ import { prismaClient } from '@pt/prisma'
 
 export const getShowcaseProjects = () =>
   prismaClient.legacyProject.findMany({
-    // TODO where showcase
-    take: 6,
+    where: {
+      showcase: {
+        not: null,
+      },
+    },
+    orderBy: { showcase: 'asc' },
   })
 
 export type ShowcaseProject = Awaited<

@@ -91,7 +91,7 @@ const ProjectCard = forwardRef<
         <picture>
           <img src={legacyProjectImageUrl(imagePath)} alt={imageAlt} />
         </picture>
-        <div className="fr-px-5w fr-py-10v">
+        <div className={`fr-px-5w fr-py-10v ${styles.cardContent}`}>
           <p
             className="fr-hint-text"
             style={{ color: 'var(--text-mention-grey' }}
