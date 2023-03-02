@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "postinstall": "npm run setup:dsfr",
-    "scalingo-postbuild": "next build && modclean -Pr && npm prune --omit=dev",
+    "scalingo-postbuild": "npx prisma migrate deploy && npm run cli:update-legacy-projects && next build && modclean -Pr && npm prune --omit=dev",
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
